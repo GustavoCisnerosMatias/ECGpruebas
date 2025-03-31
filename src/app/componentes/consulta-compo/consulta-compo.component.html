@@ -1,0 +1,128 @@
+<ion-card>
+  <ion-card-header>
+    <ion-toolbar>
+      <ion-title>Consulta Médica</ion-title>
+      
+    </ion-toolbar>
+  </ion-card-header>
+
+  <ion-card-content>
+    <!-- Formulario de consulta médica -->
+    <form [formGroup]="consultaForm" (ngSubmit)="guardarConsulta()">
+      <ion-item-divider>
+        <ion-label>Datos de la consulta</ion-label>
+        <ion-buttons color="primary" slot="end">
+          <ion-button (click)="guardarConsulta()" >Guardar consulta</ion-button>
+        </ion-buttons>
+      </ion-item-divider>
+      <ion-item class="paciente-info">
+        <ion-label>
+          <h2>{{ paciente?.cedula }} {{ paciente?.apellido }}</h2>
+          <h3 style="margin-top: 4px;">Cédula: {{ paciente?.nombre }}</h3>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Diagnóstico (A15-A19)
+          <ion-button (click)="openConsultation()" fill="clear" size="small" style="margin-left: 8px;">
+            <ion-icon slot="icon-only" name="search"></ion-icon>
+          </ion-button>
+        </ion-label>
+        <ion-input formControlName="motivo_consulta" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Observaciones</ion-label>
+        <ion-textarea formControlName="observaciones"></ion-textarea>
+      </ion-item>
+    </form>
+
+    <!-- Formulario de medicamento -->
+    <form [formGroup]="medicamentoForm" (ngSubmit)="agregarReceta()">
+      <ion-item-divider color="primary" class="section-divider">
+        <ion-label>Tratamiento</ion-label>
+      </ion-item-divider>
+
+      <ion-list>
+        <ion-item *ngFor="let receta of recetas; let i = index" lines="none" class="receta-item">
+          <ion-label>
+            <h2>Medicamento:</h2>
+            <p>{{ receta.denominacion_comun_internacional }}</p>
+            <h2>Observaciones:</h2>
+            <p>{{ receta.observaciones }}</p>
+            <h2>Dosis:</h2>
+            <p>{{ receta.dosis }}</p>
+            <h2>Frecuencia:</h2>
+            <p>{{ receta.frecuencia }}</p>
+            <h2>Duración:</h2>
+            <p>{{ receta.duracion }}</p>
+            <h2>Instrucciones:</h2>
+            <p>{{ receta.instrucciones }}</p>
+          </ion-label>
+          <ion-button slot="end" color="danger" (click)="eliminarReceta(i)" fill="clear" size="small">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+
+      <ion-item>
+        <ion-label position="stacked">Buscar medicamento</ion-label>
+        <ion-input formControlName="searchTerm" (ionInput)="filterMedicamentos()" placeholder="Buscar..."></ion-input>
+        <ion-button (click)="openMedicamentoModal()">Ver medicamentos</ion-button>
+      </ion-item>
+
+      <ion-modal #medicamentoModal>
+        <ng-template>
+          <ion-toolbar>
+            <ion-title>Selecciona un medicamento</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="closeMedicamentoModal()">Cerrar</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+          <ion-content>
+            <ion-list>
+              <ion-item *ngFor="let medicamento of filteredMedicamentos" (click)="seleccionarMedicamento(medicamento)">
+                <ion-label>
+                  <h2>{{ medicamento.denominacion_comun_internacional }}</h2>
+                  <p>Código: {{ medicamento.codigo }}</p>
+                  <p>Forma farmacéutica: {{ medicamento.forma_farmaceutica }}</p>
+                  <p>Concentración: {{ medicamento.concentracion }}</p>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+
+      <ion-item>
+        <ion-label position="stacked">Fecha de vencimiento</ion-label>
+        <ion-input type="date" formControlName="fecha_vencimiento"></ion-input>
+      </ion-item>
+
+
+
+      <ion-item>
+        <ion-label position="stacked">Dosis(Cantidad)</ion-label>
+        <ion-input formControlName="dosis" type="number" required></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="stacked">Frecuencia (Horas)</ion-label>
+        <ion-input formControlName="frecuencia" type="number" required></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="stacked">Duración (Días)</ion-label>
+        <ion-input formControlName="duracion" type="number" required></ion-input>
+      </ion-item>
+      
+
+      <ion-item>
+        <ion-label position="stacked">Instrucciones</ion-label>
+        <ion-textarea formControlName="instrucciones"></ion-textarea>
+      </ion-item>
+
+      <ion-button expand="full" type="submit" color="secondary">Agregar medicamento</ion-button>
+    </form>
+  </ion-card-content>
+</ion-card>

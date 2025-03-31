@@ -1,0 +1,18 @@
+<ion-menu menuId="priMenu" side="end" contentId="principal">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Opciones</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-menu-toggle *ngFor="let objMe of menu">
+        <ion-item (click)="navigateTo(objMe.men_pagina)">
+          <ion-icon slot="start" [name]="objMe.men_icono" [style.color]="generateRandomColor()"></ion-icon>
+          <ion-label>{{objMe.men_descripcion}}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>

@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Consultas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <ion-row>
+      <!-- Menú vertical -->
+      <ion-col size="12" size-sm="2.5" size-md="2.5">
+        <ion-card (click)="selectMenuOption('antecePerson')" [class.selected]="selectedOption === 'antecePerson'" class="menu-card">
+          <ion-card-header>
+            <ion-icon name="person-circle-outline" class="icono"></ion-icon>
+            <ion-card-title>Antecedentes Personales</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+
+        <ion-card (click)="selectMenuOption('anteceFami')" [class.selected]="selectedOption === 'anteceFami'" class="menu-card">
+          <ion-card-header>
+            <ion-icon name="people-outline" class="icono"></ion-icon>
+            <ion-card-title>Antecedentes Familiares</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+
+        <ion-card (click)="selectMenuOption('alergias')" [class.selected]="selectedOption === 'alergias'" class="menu-card">
+          <ion-card-header>
+            <ion-icon name="medkit-outline" class="icono"></ion-icon>
+            <ion-card-title>Alergias</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+
+        <ion-card (click)="selectMenuOption('consultaCompo')" [class.selected]="selectedOption === 'consultaCompo'" class="menu-card">
+          <ion-card-header>
+            <ion-icon name="clipboard-outline" class="icono"></ion-icon>
+            <ion-card-title>Consulta</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+
+        <ion-card (click)="selectMenuOption('trataAnte')" [class.selected]="selectedOption === 'trataAnte'" class="menu-card">
+          <ion-card-header>
+            <ion-icon name="bandage-outline" class="icono"></ion-icon>
+            <ion-card-title>Tratamientos Anteriores</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+
+        <!-- <ion-card (click)="selectMenuOption('consultaAnteriores')" [class.selected]="selectedOption === 'consultaAnteriores'" class="menu-card">
+          <ion-card-header>
+            <ion-icon name="folder-open-outline" class="icono"></ion-icon>
+            <ion-card-title>Consultas Anteriores</ion-card-title>
+          </ion-card-header>
+        </ion-card> -->
+      </ion-col>
+
+      <!-- Contenido de las opciones seleccionadas -->
+      <ion-col size="12" size-md="9">
+        <ng-container *ngIf="selectedOption == 'antecePerson'">
+          <app-antece-person [paciente]="paciente"></app-antece-person>
+        </ng-container>
+        <ng-container *ngIf="selectedOption == 'anteceFami'">
+          <app-antece-fami [paciente]="paciente"></app-antece-fami>
+        </ng-container>
+        <ng-container *ngIf="selectedOption == 'alergias'">
+          <app-alergias [paciente]="paciente"></app-alergias>
+        </ng-container>
+        <ng-container *ngIf="selectedOption == 'consultaCompo'">
+          <app-consulta-compo [paciente]="paciente"></app-consulta-compo>
+        </ng-container>
+        <ng-container *ngIf="selectedOption == 'trataAnte'">
+          <app-trata-ante [paciente]="paciente"></app-trata-ante>
+        </ng-container>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,40 @@
+
+  
+ion-toolbar {
+  --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+  --color: white; /* Color del texto */
+  --border-color: transparent; /* Elimina el borde */
+}
+  .menu-card {
+    margin: 0;
+  }
+  
+  .icono {
+    font-size: 24px; /* Ajusta el tamaño del icono */
+  }
+  
+  ion-segment-button {
+    --background: transparent; /* Fondo transparente */
+    --color: #3880ff; /* Color del texto */
+  }
+  .max-height-col {
+    max-height: 800px; // Ajusta el valor de altura máxima según necesites
+    overflow-y: auto; // Agrega scroll si el contenido supera el alto máximo
+  }
+  
+
+  .icono {
+    font-size: 50px; /* Ajuste para íconos más pequeños en el menú vertical */
+    color: #0288d1;
+  }
+  
+  ion-card-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #01579b;
+  }
+  
+  ion-card-header {
+    text-align: center;
+  }
+  

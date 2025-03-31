@@ -1,0 +1,29 @@
+ion-toolbar {
+  --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+  --color: white; /* Color del texto */
+  --border-color: transparent; /* Elimina el borde */
+}
+  .div-c {
+    background-color: rgba(56, 119, 192, 0.685); /* Fondo azul opaco */
+    padding: 5px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    
+    margin-top: 15px;
+  }
+
+
+  .parametro-item {
+    border: 1px solid #007aff; /* Borde azul */
+    margin-bottom: 10px; /* Espacio entre ítems */
+    background-color: #ffffff; /* Fondo blanco para cada ítem */
+    border-radius: 4px; /* Bordes redondeados para ítems */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
+  }
+  
+  .parametro-item h2 {
+    color: #007aff; /* Color del texto del nombre del parámetro */
+  }
+  
+  .parametro-item p {
+    color: #555; /* Color del texto del estado y unidad */
+  }

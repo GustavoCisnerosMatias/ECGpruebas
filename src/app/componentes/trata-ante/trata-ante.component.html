@@ -1,0 +1,61 @@
+<ion-item>
+  <ion-label>Año</ion-label>
+  <ion-select [(ngModel)]="anioSeleccionado" (ionChange)="filtrarRecetas()">
+    <ion-select-option *ngFor="let anio of anios" [value]="anio">{{ anio }}</ion-select-option>
+  </ion-select>
+</ion-item>
+
+<ion-button color ="secondary"(click)="filtrarRecetas()" expand="full">Listar Recetas</ion-button>
+<div class="paciente-info" *ngIf="recetas.length > 0">
+  <ion-row>
+    <ion-col size="12" size-sm="6" size-md="5">
+      <h2>{{ recetas[0].nombre }} {{ recetas[0].apellido }}</h2>
+      <h3>Cédula: {{ recetas[0].cedula }}</h3>
+    </ion-col>
+    <ion-col size="12" size-sm="6" size-md="4">
+      <h3>Edad: {{ calcularEdad(recetas[0].fecha_nacimiento) }} años</h3>
+
+      <h3>Género: {{ recetas[0].Genero }}</h3>
+    </ion-col>
+  </ion-row>
+</div>
+<ion-card *ngIf="recetas.length > 0" class="recetas-card">
+  
+  <ion-card-header>
+    <ion-card-title class="recetas-title">Recetas médicas</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-md="6" *ngFor="let receta of recetas" class="receta-container">
+          <ion-card class="receta">
+            <ion-card-header>
+              <h2 class="receta-code">Código: {{ receta.codigo }}</h2>
+              <p class="receta-date">Fecha Receta: {{ receta.fecha_receta | date: 'short' }}</p>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-label class="receta-label">
+                <p><strong>Fármaco:</strong> {{ receta.denominacion_comun_internacional }} ({{ receta.forma_farmaceutica }})</p>
+                <p><strong>Diagnóstico:</strong> {{ receta.motivo_consulta }} <ion-icon (click)="openConsultation()" name="search" slot="end"></ion-icon></p>
+                <p><strong>Dosis:</strong> {{ receta.dosis }}</p>
+                <p><strong>Frecuencia:</strong> {{ receta.frecuencia }}</p>
+                <p><strong>Duración:</strong> {{ receta.duracion }}</p>
+                <p><strong>Instrucciones:</strong> {{ receta.instrucciones }}</p>
+                <p><strong>Observaciones:</strong> {{ receta.observaciones || 'N/A' }}</p>
+                <p class="receta-expiration"><strong>Vencimiento:</strong> {{ receta.fecha_vencimiento | date: 'short' }}</p>
+              </ion-label>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+  <ion-button color="primary" (click)="generarPDF()" expand="full">Generar PDF</ion-button>
+
+</ion-card>
+
+<ion-card *ngIf="recetas.length === 0" class="no-recetas-card">
+  <ion-card-content class="no-recetas-content">
+    No se encontraron recetas para este paciente.
+  </ion-card-content>
+</ion-card>

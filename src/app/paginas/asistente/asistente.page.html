@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Asistente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="full-width-grid">
+    <ion-row >
+      <!-- Columna para los botones (siempre columna) -->
+      <ion-col size="12" size-md="2" class="ion-no-padding">
+        <ion-card class="custom-card">
+          <ion-card-content>
+            <!-- Botón para Crear Asistente -->
+            <ion-button color="secondary" expand="block" fill="solid" (click)="toggleComponente('crear')">
+              <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+              Crear Asistente
+            </ion-button>
+            <!-- Espacio entre los botones -->
+            <div class="espacio-entre-botones"></div>
+            <!-- Botón para Editar Asistente -->
+            <ion-button color="secondary" expand="block" fill="solid" (click)="toggleComponente('editar')">
+              <ion-icon slot="start" name="create-outline"></ion-icon>
+              Editar Asistente
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <!-- Columna para el componente CrearUsuarios (debajo en pantallas pequeñas, al lado en grandes) -->
+      <ion-col size="12" size-md="10" *ngIf="mostrarCrearUsuario" class="ion-no-padding full-width">
+        <app-crear-asistente class="full-width"></app-crear-asistente>
+      </ion-col>
+      <ion-col size="12" size-md="10" *ngIf="mostrarEditarUsuario" class="ion-no-padding full-width">
+        <app-editar-asistente class="full-width"></app-editar-asistente>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  
+</ion-content>

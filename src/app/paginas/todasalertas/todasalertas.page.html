@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Todas las alertas</ion-title>
+    <ion-button slot="end" (click)="imprimir()" fill="clear">
+      <ion-icon name="print"></ion-icon>
+    </ion-button>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="5">
+  <!-- Sección de búsqueda -->
+  <ion-card class="profile-card">
+    <ion-label>Ingresar las fechas para cargar los datos</ion-label>
+    <ion-item>
+      <ion-label position="floating">Fecha de inicio</ion-label>
+      <ion-input type="date" [(ngModel)]="startDate"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Fecha de fin</ion-label>
+      <ion-input type="date" [(ngModel)]="endDate"(ionChange)="cargarAlertas()"></ion-input>
+    </ion-item>
+  </ion-card>
+</ion-col>
+<ion-col size="12" size-md="7">
+  <ion-item>
+    <ion-icon name="search" slot="start"></ion-icon> <!-- Icono de búsqueda al principio -->
+    <ion-input [(ngModel)]="searchName" (ionInput)="filterAlertas()" placeholder="Buscar por nombre de Alerta"></ion-input> <!-- Placeholder con el mensaje -->
+  </ion-item>
+  
+  <!-- Sección de resultados -->
+  <ion-grid id="contenido-a-imprimir" class="ion-no-padding ion-margin">
+    <!-- Fila de encabezado de la tabla -->
+    <ion-row class="ion-text-center ion-no-padding">
+      <ion-col class="table-header"><strong>Nombre Alerta</strong></ion-col>
+      <ion-col class="table-header"><strong>Fecha Alerta</strong></ion-col>
+      <!-- <ion-col class="table-header"><strong>Descripción</strong></ion-col> -->
+      <ion-col class="table-header"><strong>Valor</strong></ion-col>
+      <ion-col class="table-header"><strong>Unidad</strong></ion-col>
+      <ion-col class="table-header"><strong>Vista</strong></ion-col>
+    </ion-row>
+    
+    <!-- Fila de datos de alertas -->
+    <ion-row *ngFor="let alerta of filteredAlertas" 
+    
+             class="custom-row" 
+             [ngClass]="{'highlight-new': alerta.vista === 'Nuevo'}">
+      <ion-col class="table-data">{{ alerta.nombre_alerta }}</ion-col>
+      <ion-col class="table-data">{{ formatFecha(alerta.fecha_alerta) }}</ion-col>
+      <!-- <ion-col class="table-data">{{ alerta.descripcion }}</ion-col> -->
+      <ion-col class="table-data">{{ alerta.valor }}</ion-col>
+      <ion-col class="table-data">{{ alerta.unidad_medida }}</ion-col>
+      <ion-col class="table-data">
+        <ion-badge color="{{ alerta.vista === 'Nuevo' ? 'danger' : 'success' }}">
+          {{ alerta.vista }}
+        </ion-badge>
+        
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <div *ngIf="filteredAlertas.length === 0">
+      <ion-label>No hay alertas disponibles.</ion-label>
+    </div>
+  </ion-grid>
+  
+ 
+</ion-col>
+</ion-row>
+</ion-grid>
+</ion-content>

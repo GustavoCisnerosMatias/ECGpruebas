@@ -1,0 +1,58 @@
+<div *ngIf="mostrarCrearAlergia">
+  <ion-card>
+    <ion-card-header>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/consultas"></ion-back-button>
+      </ion-buttons>
+      <ion-card-title>Crear Nueva Alergiaaaa</ion-card-title>
+      <ion-button fill="clear" slot="end" (click)="cerrarFormulario()">
+        <ion-icon name="close-circle" size="large"></ion-icon>
+      </ion-button>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <!-- Columna izquierda para la descripción, nivel y tipo de alergia -->
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="stacked">Descripción</ion-label>
+              <ion-input [(ngModel)]="nuevaAlergia.Descripcion" style="text-transform: uppercase;"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Nivel</ion-label>
+              <ion-select [(ngModel)]="nuevaAlergia.Nivel">
+                <ion-select-option *ngFor="let nivel of nivelesAlergia" [value]="nivel">{{ nivel }}</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Tipo de Alergia</ion-label>
+              <ion-select [(ngModel)]="nuevaAlergia.id_tipo" (ionChange)="onTipoAlergiaChange($event.detail.value)">
+                <ion-select-option *ngFor="let tipo of tiposAlergias" [value]="tipo.id_tipo">{{ tipo.NombreTipo }}</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+
+            <ion-button expand="block" (click)="guardarNuevaAlergia()">Guardar Alergia</ion-button>
+          </ion-col>
+
+          <!-- Columna derecha para la búsqueda y selección de medicamentos -->
+          <ion-col size="6" *ngIf="tipoSeleccionado == 2"> <!-- Mostrar solo si el tipo es 'Medicamento' -->
+            <ion-item>
+              <ion-label position="stacked">Buscar Medicamento</ion-label>
+              <ion-input [(ngModel)]="filtroMedicamento" (ionInput)="filtrarMedicamentos()" placeholder="Escriba para buscar medicamentos"></ion-input>
+            </ion-item>
+
+            <ion-list *ngIf="medicamentosFiltrados.length > 0">
+              <ion-item *ngFor="let medicamento of medicamentosFiltrados" (click)="seleccionarMedicamento(medicamento)">
+                {{ medicamento.denominacion_comun_internacional }} ({{ medicamento.codigo }})
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</div>

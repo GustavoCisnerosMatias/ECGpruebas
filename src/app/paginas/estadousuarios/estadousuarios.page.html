@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/usuario"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Usuarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchText" (ionInput)="buscarUsuarios()"></ion-searchbar>
+
+  <!-- Tabla en pantallas grandes -->
+  <ion-grid class="table-desktop">
+    <ion-row class="table-header">
+      <ion-col size="2">Nombre</ion-col>
+      <ion-col size="2">Cédula</ion-col>
+      <ion-col size="2">Rol</ion-col>
+      <ion-col size="2">Estado</ion-col>
+      <ion-col size="2">Acciones</ion-col>
+    </ion-row>
+    <ion-row class="table-row" *ngFor="let usuario of usuarios">
+      <ion-col size="2">{{ usuario.nombre }} {{ usuario.apellido }}</ion-col>
+      <ion-col size="2">{{ usuario.cedula }}</ion-col>
+      <ion-col size="2">{{ usuario.id_rol }}</ion-col>
+      <ion-col size="2">{{ usuario.estado }}</ion-col>
+      <ion-col size="2">
+        <ion-button (click)="editarUsuario(usuario.id_usuario)">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Tarjetas en pantallas pequeñas -->
+  <ion-list class="table-mobile" *ngIf="usuarios">
+    <ion-item *ngFor="let usuario of usuarios" class="card">
+      <ion-label>
+        <h3>{{ usuario.nombre }} {{ usuario.apellido }}</h3>
+        <p>Cédula: {{ usuario.cedula }}</p>
+        <p>Rol: {{ usuario.id_rol }}</p>
+        <p>Estado: {{ usuario.estado }}</p>
+      </ion-label>
+      <ion-button fill="outline" slot="end" (click)="editarUsuario(usuario.id_usuario)">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

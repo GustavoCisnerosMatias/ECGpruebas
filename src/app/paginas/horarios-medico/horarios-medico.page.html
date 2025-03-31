@@ -1,0 +1,81 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Horarios de Consultas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+    <ion-list *ngIf="horarios.length > 0" lines="full">
+      <ion-item *ngFor="let horario of horarios" lines="none" detail="false" class="horario-item">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12" class="text-center">
+              <h2 class="horario-title">Hora de atención</h2>
+              <h3>{{ horario.hora_inicio }} - {{ horario.hora_fin }}</h3>
+              <h4>Días de Atención:</h4>
+              <p class="dias-atencion">
+                <span *ngIf="horario.lunes">🗓️ Lunes </span>
+                <span *ngIf="horario.martes">🗓️ Martes </span>
+                <span *ngIf="horario.miercoles">🗓️ Miércoles </span>
+                <span *ngIf="horario.jueves">🗓️ Jueves </span>
+                <span *ngIf="horario.viernes">🗓️ Viernes </span>
+                <span *ngIf="horario.sabado">🗓️ Sábado </span>
+                <span *ngIf="horario.domingo">🗓️ Domingo </span>
+              </p>
+            </ion-col>
+          </ion-row>
+          <div class="container">
+          <ion-row>
+            <ion-col size="12">
+              <h3 class="text-center">Actualizar Horario</h3>
+              <form (ngSubmit)="editarHorario(horario)" class="horario-form" style="width: 100%;">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="6" size-md="4">
+                      <ion-label class="dias-atencion"position="floating">Hora inicio</ion-label>
+                      <ion-input class="dias-atencion" [(ngModel)]="horario.hora_inicio" name="hora_inicio" placeholder="Ej: 09:00"></ion-input>
+                    </ion-col>
+                    <ion-col size="6" size-md="4">
+                      <ion-label class="dias-atencion"position="floating">Hora fin</ion-label>
+                      <ion-input class="dias-atencion" [(ngModel)]="horario.hora_fin" name="hora_fin" placeholder="Ej: 18:00"></ion-input>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row>
+                    <ion-col size="12">
+                      <ion-label class="dias-atencion">Días de la semana:</ion-label>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col  size="3" *ngFor="let dia of ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']">
+                      <ion-checkbox [(ngModel)]="horario[dia]" name="{{ dia }}"></ion-checkbox>
+                      <ion-label >{{ dia.substring(0, 3) }}</ion-label>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+                
+                <div class="button-container">
+                  <ion-button expand="full" type="submit" color="primary">
+                    <ion-icon slot="start" name="create"></ion-icon>
+                    Actualizar Horario
+                  </ion-button>
+                </div>
+              </form>
+            </ion-col>
+          </ion-row>
+        </div>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+
+    <ion-item *ngIf="horarios.length === 0" lines="none" class="no-horarios">
+      <ion-label>
+        <h2 class="text-center">No hay horarios disponibles</h2>
+      </ion-label>
+    </ion-item>
+ 
+</ion-content>

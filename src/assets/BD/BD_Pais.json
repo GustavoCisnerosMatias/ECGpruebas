@@ -1,0 +1,157 @@
+{
+    "paises": [
+      {
+        "nombre": "Colombia",
+        "provincias": [
+          {
+            "nombre": "Amazonas",
+            "cantones": ["Leticia", "Puerto Nariño", "Tarapacá"]
+          },
+          {
+            "nombre": "Antioquia",
+            "cantones": ["Medellín", "Bello", "Itagüí", "Envigado", "Rionegro"]
+          },
+          {
+            "nombre": "Bogotá D.C.",
+            "cantones": ["Bogotá"]
+          },
+          {
+            "nombre": "Cundinamarca",
+            "cantones": ["Zipaquirá", "Chía", "Soacha", "Facatativá"]
+          },
+          {
+            "nombre": "Valle del Cauca",
+            "cantones": ["Cali", "Buenaventura", "Palmira", "Tuluá"]
+          }
+        ]
+      },
+      {
+        "nombre": "Ecuador",
+        "provincias": [
+    {
+      "nombre": "Azuay",
+      "cantones": ["Cuenca", "Gualaceo", "Paute", "Santa Isabel", "Sigsig", "Chordeleg", "Giron", "El Pan", "Sevilla de Oro", "Nabon", "Ona", "Ponce Enriquez", "San Fernando", "Santa Ana", "Saraguro", "Sayausi", "Suscal", "Tarqui", "Turi", "Valladolid", "Victoria del Portete", "Yunguilla", "Quingeo"]
+    },
+    {
+      "nombre": "Bolivar",
+      "cantones": ["Guaranda", "Caluma", "Chillanes", "Chimbo", "Echeandia", "Las Naves", "San Miguel", "San Jose de Chimbo", "San Miguel", "Santiago"]
+    },
+    {
+      "nombre": "Cañar",
+      "cantones": ["Azogues", "Biblian", "Cañar", "La Troncal", "El Tambo", "Déleg", "Suscal", "Tulcan"]
+    },
+    {
+      "nombre": "Carchi",
+      "cantones": ["Tulcan", "Bolivar", "Espejo", "Mira", "Montufar", "San Pedro de Huaca"]
+    },
+    {
+      "nombre": "Chimborazo",
+      "cantones": ["Riobamba", "Alausi", "Colta", "Cumanda", "Guamote", "Guano", "Pallatanga", "Penipe", "Chunchi"]
+    },
+    {
+      "nombre": "Cotopaxi",
+      "cantones": ["Latacunga", "La Maná", "Pangua", "Pujili", "Salcedo", "Saquisili", "Sigchos"]
+    },
+    {
+      "nombre": "El Oro",
+      "cantones": ["Machala", "Arenillas", "Atahualpa", "Balsas", "Chilla", "El Guabo", "Huaquillas", "Marcabeli", "Pasaje", "Piedras", "Piñas", "Portovelo", "Santa Rosa", "Zaruma"]
+    },
+    {
+      "nombre": "Esmeraldas",
+      "cantones": ["Esmeraldas", "Atacames", "Eloy Alfaro", "Muisne", "Quininde", "San Lorenzo", "San Cristobal"]
+    },
+    {
+      "nombre": "Galapagos",
+      "cantones": ["Puerto Baquerizo Moreno", "Puerto Ayora", "Isabela"]
+    },
+    {
+      "nombre": "Guayas",
+      "cantones": ["Guayaquil", "Alfredo Baquerizo Moreno (Jujan)", "Balao", "Balzar", "Colimes", "Coronel Marcelino Maridueña", "Daule", "Durán", "El Empalme", "El Triunfo", "General Antonio Elizalde (Bucay)", "Isidro Ayora", "Lomas de Sargentillo", "Milagro", "Naranjal", "Naranjito", "Palestina", "Pedro Carbo", "Samborondon", "Santa Lucia", "Simón Bolívar", "Yaguachi"]
+    },
+    {
+      "nombre": "Imbabura",
+      "cantones": ["Ibarra", "Antonio Ante", "Cotacachi", "Otavalo", "Pimampiro", "San Miguel de Urcuqui"]
+    },
+    {
+      "nombre": "Loja",
+      "cantones": ["Loja", "Calvas", "Catamayo", "Celica", "Chaguarpamba", "Espindola", "Gonzanama", "Macara", "Paltas", "Pindal", "Puyango", "Quilanga", "Saraguro", "Sozoranga", "Zapotillo"]
+    },
+    {
+      "nombre": "Los Rios",
+      "cantones": ["Babahoyo", "Baba", "Buena Fe", "Mocache", "Montalvo", "Palenque", "Puebloviejo", "Quevedo", "Urdaneta", "Valencia", "Ventanas", "Vinces"]
+    },
+    {
+      "nombre": "Manabi",
+      "cantones": ["Portoviejo", "Bolivar", "Chone", "El Carmen", "Flavio Alfaro", "Jipijapa", "Junin", "Manta", "Montecristi", "Paján", "Pichincha", "Rocafuerte", "Santa Ana", "Sucre", "Tosagua", "24 de Mayo"]
+    },
+    {
+      "nombre": "Morona Santiago",
+      "cantones": ["Macas", "Gualaquiza", "Huamboya", "Limon", "Palora", "Santiago de Mendez", "Sucua", "Taisha", "Tiwinza", "Logroño"]
+    },
+    {
+      "nombre": "Napo",
+      "cantones": ["Tena", "Archidona", "Carlos Julio Arosemena Tola", "El Chaco", "Quijos"]
+    },
+    {
+      "nombre": "Orellana",
+      "cantones": ["Francisco de Orellana (Coca)", "Aguarico", "La Joya de los Sachas", "Loreto"]
+    },
+    {
+      "nombre": "Pastaza",
+      "cantones": ["Puyo", "Arajuno", "Mera"]
+    },
+    {
+      "nombre": "Pichincha",
+      "cantones": ["Quito", "Cayambe", "Mejia", "Pedro Moncayo", "Ruminahui", "San Miguel de los Bancos", "Pedro Vicente Maldonado", "Puerto Quito"]
+    },
+    {
+      "nombre": "Santa Elena",
+      "cantones": ["Santa Elena", "La Libertad", "Salinas"]
+    },
+    {
+      "nombre": "Santo Domingo de los Tsachilas",
+      "cantones": ["Santo Domingo", "La Concordia"]
+    },
+    {
+      "nombre": "Sucumbios",
+      "cantones": ["Lago Agrio", "Cascales", "Cuyabeno", "Gonzalo Pizarro", "Putumayo", "Shushufindi", "Sucumbios"]
+    },
+    {
+      "nombre": "Tungurahua",
+      "cantones": ["Ambato", "Banos", "Cevallos", "Mocha", "Patate", "Quero", "Pelileo", "Pillaro", "Quero", "San Pedro de Pelileo", "Santa Rosa", "Tisaleo"]
+    },
+    {
+      "nombre": "Zamora Chinchipe",
+      "cantones": ["Zamora", "Chinchipe", "Chinchipe", "El Pangui", "Nangaritza", "Palanda", "Paquisha", "Yacuambi", "Yantzaza"]
+    }
+  
+        ]
+      },
+      {
+        "nombre": "Perú",
+        "provincias": [
+          {
+            "nombre": "Lima",
+            "cantones": ["Lima", "Miraflores", "San Isidro", "Surco"]
+          },
+          {
+            "nombre": "Arequipa",
+            "cantones": ["Arequipa", "Camaná", "Mollendo", "Chivay"]
+          },
+          {
+            "nombre": "Cusco",
+            "cantones": ["Cusco", "Machu Picchu", "Urubamba", "Quillabamba"]
+          },
+          {
+            "nombre": "Piura",
+            "cantones": ["Piura", "Sullana", "Talara", "Paita"]
+          },
+          {
+            "nombre": "Junín",
+            "cantones": ["Huancayo", "Tarma", "La Merced", "Chanchamayo"]
+          }
+        ]
+      }
+    ]
+  }
+  

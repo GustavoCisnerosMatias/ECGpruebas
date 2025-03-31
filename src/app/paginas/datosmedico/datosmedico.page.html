@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/crearmedicos"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Datos médicos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Información del médico</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+  <form (ngSubmit)="onSubmit()" #medicoForm="ngForm">
+
+    <!-- Sección para seleccionar centro hospitalario -->
+  <ion-list>
+    <ion-item>
+      <ion-label>Seleccionar Centro hospitalario</ion-label>
+      <ion-select (ionChange)="seleccionarCentro($event)">
+        <ion-select-option *ngFor="let centro of listaCentro" required [value]="centro.id_centro">
+          {{ centro.nombre_centro }}-{{ centro.tipo_centro }} 
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <!-- Sección para seleccionar especialidad-->
+  <ion-list>
+    <ion-item>
+      <ion-label>Seleccionar especialidad</ion-label>
+      <ion-select (ionChange)="seleccionarEspecialidad($event)">
+        <ion-select-option *ngFor="let especialidad of listaespecialidad" [value]="especialidad.id_especialidad"required>
+           {{ especialidad.nombre_esp}} 
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-card-header>
+    <ion-card-title>horario de atención</ion-card-title>
+  </ion-card-header>
+   
+        <!-- Horas de atención -->
+        <ion-item>
+          <ion-label position="floating">Hora Inicio</ion-label>
+          <ion-input type="time" [(ngModel)]="horaInicio" name="horaInicio" required></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label position="floating">Hora Fin</ion-label>
+          <ion-input type="time" [(ngModel)]="horaFin" name="horaFin" required></ion-input>
+        </ion-item>
+
+        <!-- Días de atención -->
+        <ion-item>
+          <ion-label>Días de atención</ion-label>
+          <ion-checkbox [(ngModel)]="lunes" name="lunes">Lunes</ion-checkbox>
+          <ion-checkbox [(ngModel)]="martes" name="martes">Martes</ion-checkbox>
+          <ion-checkbox [(ngModel)]="miercoles" name="miercoles">Miércoles</ion-checkbox>
+          <ion-checkbox [(ngModel)]="jueves" name="jueves">Jueves</ion-checkbox>
+          <ion-checkbox [(ngModel)]="viernes" name="viernes">Viernes</ion-checkbox>
+          <ion-checkbox [(ngModel)]="sabado" name="sabado">Sábado</ion-checkbox>
+          <ion-checkbox [(ngModel)]="domingo" name="domingo">Domingo</ion-checkbox>
+        </ion-item>
+         <!-- Checkboxes -->
+<ion-item>
+  <ion-checkbox
+    [(ngModel)]="aceptaCondiciones"
+    name="aceptaCondiciones"
+    slot="start"
+  ></ion-checkbox>
+  <ion-label (click)="redirigirCondiciones()">Acepto las Condiciones de Uso de Monitoringiot.</ion-label>
+</ion-item>
+<ion-item>
+  <ion-checkbox
+    [(ngModel)]="aceptaPolitica"
+    name="aceptaPolitica"
+    slot="start"
+  ></ion-checkbox>
+  <ion-label (click)="redirigirPolitica()">He leído y comprendo la Política de protección de datos personales y privacidad de Monitoringiot.</ion-label>
+</ion-item>
+
+
+        <!-- Botón para enviar los datos del médico y horarios -->
+        <ion-button color="primary"  type="submit" [disabled]="!medicoForm.valid"expand="block" >Guardar Datos</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

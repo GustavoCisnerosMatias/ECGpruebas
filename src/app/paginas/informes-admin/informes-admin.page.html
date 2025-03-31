@@ -1,0 +1,54 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Informes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="button-container">
+    <ion-card>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" size-md="4" size-lg="3">
+            <ion-card-content (click)="mostrarEstadistica('dispositivos')" class="estadistica-card paciente">
+              <ion-icon name="person" slot="start" size="large"></ion-icon>
+              Estadística de dispositivos
+            </ion-card-content>
+          </ion-col>
+          <ion-col size="6" size-md="4" size-lg="3">
+            <ion-card-content (click)="mostrarEstadistica('medicos')" class="estadistica-card consulta">
+              <ion-icon name="file-tray-full" slot="start" size="large"></ion-icon>
+              Estadística de usuarios médicos
+            </ion-card-content>
+          </ion-col>
+          <ion-col size="6" size-md="4" size-lg="3">
+            <ion-card-content (click)="mostrarEstadistica('pacientes')" class="estadistica-card usuarios">
+              <ion-icon name="file-tray-full" slot="start" size="large"></ion-icon>
+              Estadística de pacientes
+            </ion-card-content>
+          </ion-col>
+          
+          
+          <!-- Agrega más columnas aquí según sea necesario -->
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </div>
+  
+
+
+  <ng-container *ngIf="opcionSeleccionada === 'dispositivos'">
+    <app-informes-dispositivos></app-informes-dispositivos>
+  </ng-container>
+
+  <ng-container *ngIf="opcionSeleccionada === 'medicos'">
+    <app-informes-admin-medicos></app-informes-admin-medicos>
+  </ng-container>
+  <ng-container *ngIf="opcionSeleccionada === 'pacientes'">
+    <app-informes-admin-pacientes></app-informes-admin-pacientes>
+  </ng-container>
+</ion-content>

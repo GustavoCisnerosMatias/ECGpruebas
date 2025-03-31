@@ -1,0 +1,30 @@
+.form-container {
+    padding: 16px;
+    background-color: #e3f2fd; /* Color azul claro */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 16px;
+    max-width: 400px; /* Ajustar el ancho máximo */
+    margin-left: auto; /* Centrar horizontalmente */
+    margin-right: auto; /* Centrar horizontalmente */
+  }
+  .compact-form {
+    padding: 10px;
+  }
+  
+  .inline-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .inline-item {
+    flex: 1 1 calc(50% - 10px); /* Ajuste para que los elementos se coloquen en una fila */
+    margin: 5px;
+  }
+  ion-header, ion-toolbar {
+    background: transparent !important; /* Hace que el encabezado y la barra de herramientas sean transparentes */
+    border: none; /* Elimina cualquier borde que pueda ser visible */
+    box-shadow: none; /* Elimina las sombras para un efecto más limpio */
+  }
+  

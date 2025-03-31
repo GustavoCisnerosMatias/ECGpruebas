@@ -1,0 +1,58 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Antecedente Familiar</ion-title>
+    
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  
+  <div class="form-container">
+    <form [formGroup]="anteFamiForm" (ngSubmit)="guardarAntecedenteFamiliar()">
+      <ion-list>
+        <ion-item><ion-buttons slot="end">
+          <ion-button (click)="cerrar()">
+            <ion-icon slot="icon-only" name="close"></ion-icon>
+          </ion-button>
+        </ion-buttons></ion-item>
+        <ion-item>
+          <ion-label position="floating">Relación Familiar</ion-label>
+          <ion-select formControlName="relacion_familiar">
+            <ion-select-option *ngFor="let relacion of relacionesFamiliares" [value]="relacion">{{ relacion }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      
+        <ion-item >
+          <ion-label position="floating">Código Enfermedad Ej:A15-A19</ion-label>
+          <ion-input formControlName="Codigo_emfermedad" placeholder="Ingrese código"></ion-input>
+          <ion-icon (click)="openConsultation()" name="search" slot="end"></ion-icon> <!-- Agregar el icono -->
+        </ion-item>
+        
+
+        <ion-item>
+          <ion-label position="floating">Edad Diagnóstico</ion-label>
+          <ion-input type="number" formControlName="edad_diagnostico"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Estado Actual</ion-label>
+          <ion-input formControlName="estado_actual"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Causa Muerte</ion-label>
+          <ion-input formControlName="causa_muerte"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Observaciones</ion-label>
+          <ion-textarea formControlName="observaciones"></ion-textarea>
+        </ion-item>
+      </ion-list>
+
+      <ion-button expand="full" type="submit" [disabled]="!anteFamiForm.valid">
+        Guardar Antecedente
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

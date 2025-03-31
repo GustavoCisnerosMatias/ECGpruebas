@@ -1,0 +1,38 @@
+ion-toolbar {
+  --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+  --color: white; /* Color del texto */
+  --border-color: transparent; /* Elimina el borde */
+}
+  .button-container {
+    padding: 16px;
+  }
+  
+  .estadistica-card {
+    cursor: pointer; /* Cambia el cursor al pasar sobre la tarjeta */
+    display: flex;
+    align-items: center; /* Centra el contenido verticalmente */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 16px; /* Espaciado interno */
+    color: white; /* Color del texto */
+    font-weight: bold; /* Texto en negrita */
+  }
+  
+  /* Colores personalizados para las tarjetas */
+  .paciente {
+    background-color: #3880ff; /* Azul */
+  }
+  
+  .consulta {
+    background-color: #099e9e; /* Verde */
+  }
+  
+  .nueva-opcion {
+    background-color: #f04141; /* Rojo */
+  }
+  
+  /* Cambia el color del icono si es necesario */
+  ion-icon {
+    font-size: 32px; /* Aumenta el tamaño del icono */
+    margin-right: 10px; /* Espaciado entre el icono y el texto */
+  }
+  

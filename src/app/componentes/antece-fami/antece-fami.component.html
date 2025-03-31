@@ -1,0 +1,87 @@
+<ion-card>
+  <ion-card-header>
+    <ion-toolbar color="secondary">
+      <ion-title >Información del paciente</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="refreshPage()">
+          <ion-icon name="refresh"></ion-icon> Refrescar
+        </ion-button>
+        <ion-button (click)="irACrearAntecedente()">
+          <ion-icon slot="start" name="add-circle"></ion-icon> <!-- Ícono de más -->
+          Nuevo
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-card-header>
+  <ion-card-content class="center-content">
+    <!-- Información del paciente, solo se muestra una vez -->
+    <div class="paciente-info" *ngIf="antecedentes.length > 0">
+      <ion-row>
+     <ion-col size="12" size-sm="6" size-md="3">
+      <img [src]="antecedentes[0]?.foto" alt="Foto del Paciente" *ngIf="antecedentes[0]?.foto" class="paciente-foto"/>
+      </ion-col>
+      <ion-col size="12" size-sm="6" size-md="5">
+      <h2>{{ paciente?.cedula }} {{ paciente?.apellido }}</h2>
+      <h3>Cédula: {{ paciente?.nombre }}</h3>
+      </ion-col>
+      <ion-col size="12" size-sm="6" size-md="4">
+      <h3>Edad: {{ calcularEdad(antecedentes[0]?.fecha_nacimiento) }} años</h3>
+      <h3>Género: {{ antecedentes[0]?.Genero }}</h3>
+    </ion-col>
+  </ion-row>
+    </div>
+  
+    <ion-grid  class="recetas-table">
+      <ion-row>
+        <ion-col size="12" size-md="12">
+          <ion-card>
+            <ion-card-header color="secondary">
+              <ion-card-title>Antecedentes familiares</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-list>
+                <!-- Encabezado de la tabla -->
+                <ion-item lines="none" class="header-row">
+                  <ion-label><strong>Relación Familiar</strong></ion-label>
+                  <ion-label><strong>Código Enfermedad</strong></ion-label>
+                  <ion-label><strong>Edad Diagnóstico</strong></ion-label>
+                  <ion-label><strong>Estado Actual</strong></ion-label>
+                  <ion-label><strong>Causa Muerte</strong></ion-label>
+                  <ion-label><strong>Fecha Registro</strong></ion-label>
+                 
+                </ion-item>
+                <!-- Iterar sobre los antecedentes -->
+                <ion-item *ngFor="let antecedente of antecedentes" lines="full" class="antecedente-row">
+                  <ion-label *ngIf="!antecedente.editando">{{ antecedente.relacion_familiar }}</ion-label>
+                  <ion-input *ngIf="antecedente.editando" [(ngModel)]="antecedente.relacion_familiar" required></ion-input>
+  
+                  <ion-label *ngIf="!antecedente.editando">{{ antecedente.Codigo_emfermedad }}
+                  <ion-button (click)="openConsultation()" fill="clear" size="small" style="margin-left: 8px;">
+                    <ion-icon slot="icon-only" name="search"></ion-icon> <!-- Icono de búsqueda -->
+                  </ion-button></ion-label>
+                  <ion-input *ngIf="antecedente.editando" [(ngModel)]="antecedente.Codigo_emfermedad" required></ion-input>
+  
+                  <ion-label *ngIf="!antecedente.editando">{{ antecedente.edad_diagnostico }}</ion-label>
+                  <ion-input *ngIf="antecedente.editando" [(ngModel)]="antecedente.edad_diagnostico" type="number" required></ion-input>
+  
+                  <ion-label *ngIf="!antecedente.editando">{{ antecedente.estado_actual }}</ion-label>
+                  <ion-input *ngIf="antecedente.editando" [(ngModel)]="antecedente.estado_actual" required></ion-input>
+  
+                  <ion-label *ngIf="!antecedente.editando">{{ antecedente.causa_muerte }}</ion-label>
+                  <ion-input *ngIf="antecedente.editando" [(ngModel)]="antecedente.causa_muerte"></ion-input>
+  
+                  <ion-label *ngIf="!antecedente.editando">{{ antecedente.fecha_registro }}</ion-label>
+                  <ion-label *ngIf="antecedente.editando">{{ antecedente.fecha_registro }}</ion-label>
+  
+                  <ion-button (click)="toggleEdit(antecedente)" fill="clear" size="small" style="margin-left: 8px;">
+                    <ion-icon name="{{ antecedente.editando ? 'checkmark' : 'create' }}"></ion-icon> <!-- Ícono de editar o confirmar -->
+                  </ion-button>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+  </ion-card>

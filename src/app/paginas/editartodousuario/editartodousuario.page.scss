@@ -1,0 +1,48 @@
+.responsive-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .responsive-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.center-text {
+  text-align: center;
+  display: block; /* Asegúrate de que ion-label se comporte como un bloque */
+  width: 100%; /* Asegúrate de que ocupe todo el espacio horizontal disponible */
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  top: 40px; /* Ajusta la posición del tooltip según el diseño */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.info-icon:hover + .tooltip {
+  display: block;
+}
+
+ion-toolbar {
+  --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+  --color: white; /* Color del texto */
+  --border-color: transparent; /* Elimina el borde */
+}  

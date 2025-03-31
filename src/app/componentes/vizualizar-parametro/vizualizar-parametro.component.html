@@ -1,0 +1,136 @@
+
+
+<ion-card *ngIf="parametro && paciente" >
+  <ion-card-header>
+    <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+      <ion-card-title>Detalles del paciente</ion-card-title>
+      <ion-button (click)="descargarPDF()" size="small">
+        <ion-icon name="download"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-card-header>
+  <ion-card-content>
+   
+    <h1>Paciente:</h1><h2>{{ paciente.cedula }} {{ paciente.apellido }}</h2>
+    <h1>Cédula:</h1><h2>{{ paciente.nombre }}</h2>
+  </ion-card-content>
+</ion-card>
+
+<!-- Selección de fecha con íconos para desplegar el selector -->
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Seleccionar fechas</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <!-- Fecha de Inicio -->
+   
+    <ion-item>
+      <ion-label position="floating">Fecha de inicio</ion-label>
+      <ion-input type="date" [(ngModel)]="fechaIni"></ion-input>
+    </ion-item>
+
+    <!-- Fecha de Fin -->
+   
+    <ion-item>
+      <ion-label position="floating">Fecha de fin</ion-label>
+      <ion-input type="date" [(ngModel)]="fechaFin"></ion-input>
+    </ion-item>
+
+   
+
+    <!-- Botón para buscar los datos -->
+    <ion-button expand="block" (click)="obtenerDatosDelServicio()">Buscar Datos</ion-button>
+  </ion-card-content>
+</ion-card>
+
+
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Seleccionar Tipo de Gráfico</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-segment [(ngModel)]="tipoGrafico" (ionChange)="actualizarGrafico()">
+      <ion-segment-button value="linea">
+        Gráfico de Líneas
+      </ion-segment-button>
+      <ion-segment-button value="barra">
+        Gráfico de Barras
+      </ion-segment-button>
+    </ion-segment>
+  </ion-card-content>
+</ion-card>
+
+<ion-card *ngIf="chartData.length">
+  <ion-card-header>
+    <ion-card-title>Gráfico de Parámetro</ion-card-title>
+  </ion-card-header>
+  <ion-card-content class="chart-container">
+    <canvas *ngIf="tipoGrafico === 'linea'" baseChart
+            [datasets]="chartData"
+            [labels]="chartLabels"
+            [options]="chartOptions"
+            [legend]="true"
+            type="line">
+    </canvas>
+    <canvas *ngIf="tipoGrafico === 'barra'" baseChart
+            [datasets]="chartData"
+            [labels]="chartLabels"
+            [options]="chartOptions"
+            [legend]="true"
+            type="bar">
+    </canvas>
+  </ion-card-content>
+  <ion-card *ngIf="chartData.length" class="chart-container">
+    <ion-card *ngIf="datos && datos.length > 0">
+      <ion-card-header>
+        <ion-card-title>Informe Estadístico de Datos</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div>
+          <p><strong>Media:</strong> La media de los valores registrados es {{ resultadosEstadisticos.media || 'N/A' }}. Esto representa el valor promedio de todos los datos recolectados.</p>
+          <p><strong>Mediana:</strong> La mediana es {{ resultadosEstadisticos.mediana || 'N/A' }}, indicando que la mitad de los valores están por encima de este valor y la otra mitad por debajo.</p>
+          <p><strong>Moda:</strong> La moda es {{ resultadosEstadisticos.moda.length ? resultadosEstadisticos.moda.join(', ') : 'N/A' }}. Este es el valor o los valores que se repiten con mayor frecuencia en el conjunto de datos.</p>
+          <p><strong>Valor Máximo:</strong> El valor máximo registrado es {{ resultadosEstadisticos.valorMax || 'N/A' }}, ocurrido en los siguientes días: {{ resultadosEstadisticos.diasMaximos.join(', ') || 'N/A' }}.</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    
+  </ion-card>
+  
+</ion-card>
+
+
+
+
+
+<!-- Si hay datos disponibles -->
+<ion-card *ngIf="datos && datos.length > 0">
+  <ion-card-header>
+    <ion-card-title>Datos del Parámetro</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-grid>
+      <!-- Encabezado de la tabla -->
+      <ion-row>
+        <ion-col><strong>Fecha</strong></ion-col>
+        <ion-col><strong>Valor</strong></ion-col>
+        
+      </ion-row>
+
+      <!-- Iteración de los datos -->
+      <ion-row *ngFor="let dato of datos">
+        <ion-col>{{ dato.fecha }}</ion-col>
+        <ion-col>{{ dato.valor }}  {{ dato.unidad_medida }}</ion-col>
+        
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>
+
+<!-- Mensaje cuando no hay datos -->
+<ion-card *ngIf="datos && datos.length === 0">
+  <ion-card-content>
+    No se encontraron datos para los parámetros seleccionados.
+  </ion-card-content>
+</ion-card>

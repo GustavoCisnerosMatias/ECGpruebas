@@ -1,0 +1,25 @@
+.busca{
+    background-color: rgba(71, 119, 173, 0.1);
+
+}
+ 
+.large-avatar {
+    width: 80px;  /* Ajusta este valor a tu preferencia */
+    height: 80px; /* Ajusta este valor a tu preferencia */
+    overflow: hidden;  /* Para asegurar que la imagen no se salga del contenedor */
+    display: flex;  /* Usamos flexbox para centrar */
+    justify-content: center;  /* Centramos horizontalmente */
+    align-items: center;  /* Centramos verticalmente */
+    margin: 0 auto;  /* Centra el contenedor en su bloque padre */
+}
+
+.large-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* Para mantener la proporción de la imagen */
+}
+ion-toolbar {
+    --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+    --color: white; /* Color del texto */
+    --border-color: transparent; /* Elimina el borde */
+  }

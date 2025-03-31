@@ -1,0 +1,94 @@
+
+  <ion-card>
+    <ion-card-header>
+      <ion-toolbar color="secondary">
+        <ion-title>Alergias</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="refreshPage()">
+            <ion-icon name="refresh"></ion-icon> Refrescar
+          </ion-button>
+          <ion-button (click)="irACrearAlerta()">
+            <ion-icon slot="start" name="add-circle"></ion-icon> Nuevo
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-card-header>
+
+    <ion-card-content class="center-content">
+      <div class="paciente-info" *ngIf="alergias.length > 0">
+        <ion-row>
+          <ion-col size="12" size-sm="6" size-md="3">
+            <img [src]="alergias[0]?.foto" alt="Foto del Paciente" *ngIf="alergias[0]?.foto" class="paciente-foto"/>
+          </ion-col>
+          <ion-col size="12" size-sm="6" size-md="5">
+            <h2>{{ paciente?.cedula }} {{ paciente?.apellido }}</h2>
+            <h3>Cédula: {{ paciente?.nombre }}</h3>
+          </ion-col>
+          <ion-col size="12" size-sm="6" size-md="4">
+            <h3>Edad: {{ calcularEdad(alergias[0]?.fecha_nacimiento) }} años</h3>
+            <h3>Género: {{ alergias[0]?.Genero }}</h3>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <ion-grid *ngIf="alergias.length > 0">
+        <ion-row>
+          <ion-col size="12" size-sm="6" size-md="4" *ngFor="let alergia of alergias">
+            <ion-card>
+              <ion-card-header color="secondary">
+                <ion-card-title>{{ alergia.NombreTipo }}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <p><strong>Tipo:</strong> {{ alergia.NombreTipo }}</p>
+                <p><strong>Descripción:</strong> {{ alergia.Descripcion }}</p>
+                <p><strong>Nivel:</strong> {{ alergia.Nivel }}</p>
+
+                <div *ngIf="alergia.NombreTipo === 'Medicamento'">
+                  <p><strong>Código:</strong> {{ alergia.codigo }}</p>
+                  <p><strong>Medicamento:</strong> {{ alergia.denominacion_comun_internacional }}</p>
+                </div>
+
+                <p><strong>Fecha de Registro:</strong> {{ alergia.FechaCreacion | date: 'short' }}</p>
+
+                <!-- Botones para editar y eliminar alergia -->
+                <ion-button expand="block" fill="clear" (click)="seleccionarAlergia(alergia)">
+                  <ion-icon name="create-outline"></ion-icon>
+                </ion-button>
+                <ion-button expand="block" fill="clear" color="danger" (click)="eliminarAlergia(alergia.id_alergia)">
+                  <ion-icon name="trash-outline"></ion-icon>
+                </ion-button>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <!-- Formulario de edición de alergias -->
+      <div *ngIf="alergiaSeleccionada">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Editar Alergia</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="stacked">Descripción</ion-label>
+              <ion-input [(ngModel)]="alergiaSeleccionada.Descripcion" style="text-transform: uppercase;"></ion-input>
+            </ion-item>
+
+            <!-- Combobox para niveles de alergia -->
+            <ion-item>
+              <ion-label position="stacked">Nivel</ion-label>
+              <ion-select [(ngModel)]="alergiaSeleccionada.Nivel">
+                <ion-select-option value="LEVE">LEVE</ion-select-option>
+                <ion-select-option value="MODERADO">MODERADO</ion-select-option>
+                <ion-select-option value="GRAVE">GRAVE</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-button expand="block" (click)="actualizarAlergia()">Guardar Cambios</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ion-card-content>
+  </ion-card>
+

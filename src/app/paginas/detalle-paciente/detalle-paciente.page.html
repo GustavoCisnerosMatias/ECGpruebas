@@ -1,0 +1,72 @@
+<ion-card>
+  <ion-card-header>
+    <ion-toolbar>
+      <ion-buttons size="6" size-md="2" slot="start">
+        <ion-back-button defaultHref="/inicio"></ion-back-button>
+      </ion-buttons>
+      <ion-row>
+        <ion-col size="6"size-md="2">
+          <ion-button expand="block" (click)="navegarAPagina('vizualizar-parametros')">
+            <ion-icon name="stats-chart-outline"></ion-icon>
+            Signos vitales
+          </ion-button>
+        </ion-col>
+        <ion-col size="6" size-md="2">
+          <ion-button expand="block" (click)="navegarAPagina('alertas-medico')">
+            <ion-icon name="notifications-outline"></ion-icon>
+            Alertas
+          </ion-button>
+        </ion-col>
+        <ion-col size="6" size-md="2">
+          <ion-button expand="block" (click)="navegarAPagina('consultas')">
+            <ion-icon name="reader-outline"></ion-icon>
+            Consultas
+          </ion-button>
+        </ion-col>
+        <ion-col size="6" size-md="2">
+          <ion-button expand="block" (click)="mostrarOpcionesMensaje('whatsapp')">
+            <ion-icon slot="start" name="logo-whatsapp"></ion-icon>
+            WhatsApp
+          </ion-button>
+        </ion-col>
+        <ion-col size="6" size-md="2">
+          <ion-button expand="block" (click)="mostrarOpcionesMensaje('telegram')">
+            <ion-icon slot="start" name="paper-plane"></ion-icon>
+            Telegram
+          </ion-button>
+        </ion-col>
+        <ion-col size="6" size-md="2">
+          <ion-button expand="block" (click)="abrirChat()">
+            <ion-icon slot="start" name="chatbubbles"></ion-icon>
+            Abrir Chat
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-row>
+      <ion-card-title>Datos del paciente</ion-card-title>
+      <ion-col size="12" class="ion-text-left">
+        <h2><strong>Identificación</strong></h2>
+        <p>{{ nombre }}</p>
+      </ion-col>
+      <ion-col size="12" class="ion-text-left">
+        <h2><strong>Nombre y Apellido</strong></h2>
+        <p>{{ cedula }} {{ apellido }}</p>
+      </ion-col>
+      <ion-col size="12" class="ion-text-left">
+        <h2><strong>Teléfono</strong></h2>
+        <p>{{ telefono }}</p>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+</ion-card>
+
+<app-chat-usuario
+  *ngIf="mostrarChat"
+  [id_usuario]="idUsuario"
+  [id_medico]="medicoActualId"
+  (chatClosed)="cerrarChat()">
+</app-chat-usuario>

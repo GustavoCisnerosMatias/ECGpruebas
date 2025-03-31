@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cambiar dispositivo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="contenedor-pequeño">
+  <ion-grid>
+    <ion-row>
+      <!-- Primera columna: Información del dispositivo -->
+      <ion-col size="12" size-md="6">
+        <ion-card *ngIf="!dispositivo">
+          <ion-card-header *ngIf="enableButtom == 'disable'">
+            <ion-card-title>No se encontró dispositivo para este usuario</ion-card-title>
+            <ion-button color="secondary" expand="full" (click)="Dispositivo()">Añadir Dispositivo</ion-button>
+          </ion-card-header>
+        </ion-card>
+        <ion-card *ngIf="dispositivo">
+          <ion-card-content>
+            <ion-item>
+              <ion-label><b>Nombre:</b></ion-label>
+              <ion-input [(ngModel)]="dispositivoEditado.nombre"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label><b>Código:</b></ion-label>
+              <ion-input [(ngModel)]="dispositivoEditado.codigo"></ion-input>
+            </ion-item>
+            <ion-button color="secondary" expand="full" (click)="actualizarDispositivo()">Actualizar Dispositivo</ion-button>
+                      <!-- Segunda columna: Imagen -->
+          <ion-col size="12" size-md="6"class="ion-text-center">
+            <img src="assets/img/dispo.png" alt="Imagen del dispositivo" style="max-width: 100%; height: auto; border-radius: 8px;" />
+          </ion-col>
+          </ion-card-content>
+
+        </ion-card>
+
+
+
+
+      </ion-col>
+
+
+    </ion-row>
+  </ion-grid>
+  <div *ngIf="pasoActual === 'creardispositivo'">
+    <div class="form-container">
+      <form #dispositivoForm="ngForm"  novalidate>
+        <!-- Nombre -->
+        <h2>
+          En la parte posterior del dispositivo encontrará el nombre del dispositivo y el código
+        </h2>
+        <ion-item class="input-item">
+          <ion-label position="floating">Nombre del dispositivo</ion-label>
+          <ion-input
+            type="text"
+            [(ngModel)]="dispositivo.nombre"
+            name="nombre"
+            required
+            #nombreInput="ngModel"
+          ></ion-input>
+          <div *ngIf="nombreInput.invalid && nombreInput.touched" class="error-message">
+            El nombre es obligatorio
+          </div>
+        </ion-item>
+
+        <!-- Código -->
+        <ion-item class="input-item">
+          <ion-label position="floating">Código</ion-label>
+          <ion-input
+            type="text"
+            [(ngModel)]="dispositivo.codigo"
+            name="codigo"
+            required
+            #codigoInput="ngModel"
+          ></ion-input>
+          <div *ngIf="codigoInput.invalid && codigoInput.touched" class="error-message">
+            El código es obligatorio
+          </div>
+        </ion-item>
+
+                                    <!-- Segunda columna: Imagen -->
+                                    <ion-col size="12" size-md="6"class="ion-text-center">
+                                      <img src="assets/img/dispo.png" alt="Imagen del dispositivo" style="max-width: 100%; height: auto; border-radius: 8px;" />
+                                    </ion-col>
+              <!-- Checkboxes -->
+        <ion-item>
+          <ion-checkbox
+            [(ngModel)]="aceptaCondiciones"
+            name="aceptaCondiciones"
+            slot="start"
+          ></ion-checkbox>
+          <ion-label (click)="redirigirCondiciones()">Acepto las Condiciones de Uso de Monitoringiot.</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-checkbox
+            [(ngModel)]="aceptaPolitica"
+            name="aceptaPolitica"
+            slot="start"
+          ></ion-checkbox>
+          <ion-label (click)="redirigirPolitica()">He leído y comprendo la Política de protección de datos personales y privacidad de Monitoringiot.</ion-label>
+        </ion-item>
+
+
+        <!-- Botones -->
+        <div class="button-container">
+
+          <ion-button
+            color="secondary"
+            type="submit"
+            expand="block"
+            class="button-create"
+            [disabled]="!esFormularioValido()"
+          >
+            Finalizar Registro
+          </ion-button>
+          <ion-button
+          color="danger"
+
+          expand="block"
+          class="button-create"
+          (click)="cancelar()"
+        >
+          Cancelar
+        </ion-button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+
+
+</ion-content>

@@ -1,0 +1,165 @@
+<ion-card>
+<ion-card-header >
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/autentificacion"></ion-back-button>
+    </ion-buttons>
+    <ion-card-title>Registro de nuevo usuario</ion-card-title>
+  </ion-toolbar>
+</ion-card-header >
+
+<ion-card-content>
+  <form (ngSubmit)="registrarUsuario()" class="user-form">
+    <ion-row>
+    <ion-col size="12" size-md="6">
+    <!-- Nombre -->
+    <ion-item [ngClass]="{'invalid-field': nombre.invalid && nombre.touched}">
+      <ion-label position="floating">Nombre *</ion-label>
+      <ion-input type="text" [(ngModel)]="usuario.nombre" name="nombre" required #nombre="ngModel" (ionInput)="validateNameInput($event)"></ion-input>
+    </ion-item>
+    <ion-note color="danger" *ngIf="nombre.invalid && nombre.touched">El nombre es obligatorio y no puede contener números.</ion-note>
+
+    <!-- Apellido -->
+    <ion-item [ngClass]="{'invalid-field': apellido.invalid && apellido.touched}">
+      <ion-label position="floating">Apellido *</ion-label>
+      <ion-input type="text" [(ngModel)]="usuario.apellido" name="apellido" required #apellido="ngModel" (ionInput)="validateNameInput($event)"></ion-input>
+    </ion-item>
+    <ion-note color="danger" *ngIf="apellido.invalid && apellido.touched">El apellido es obligatorio.</ion-note>
+
+    <!-- Cédula/Visa/Pasaporte -->
+<ion-item>
+  <ion-segment [(ngModel)]="tipoIdentificacion" (ionChange)="tipoIdentificacionChange($event)" [ngModelOptions]="{standalone: true}">
+    <ion-segment-button value="cedula">Cédula</ion-segment-button>
+    <ion-segment-button value="visa">Visa</ion-segment-button>
+    <ion-segment-button value="pasaporte">Pasaporte</ion-segment-button>
+  </ion-segment>
+</ion-item>
+
+<ion-item [ngClass]="{'invalid-field': cedula.invalid && cedula.touched}">
+  <ion-label position="floating">{{ tipoIdentificacion | titlecase }}</ion-label>
+  <ion-input
+    type="text"
+    [(ngModel)]="usuario.cedula"
+    name="cedula"
+    [maxlength]="longitudesMaximas[tipoIdentificacion]"
+    (ionInput)= "validateNumericInput($event)"
+    required
+    #cedula="ngModel"
+    (ionInput)="validarIdentificacion()"
+    (ionChange)="validarIdentificacion()"> <!-- Validar en cada cambio -->
+  </ion-input>
+</ion-item>
+
+
+<!-- Mensaje de error -->
+<p *ngIf="mensajeError" color="danger"class="error-message">{{ mensajeError }}</p>
+
+<ion-note color="danger" *ngIf="cedula.invalid && cedula.touched">Identificación inválida.</ion-note>
+
+<!-- Género -->
+      <ion-item [ngClass]="{'invalid-field': Genero.invalid && Genero.touched}">
+        <ion-label position="floating">Género *</ion-label>
+        <ion-select [(ngModel)]="usuario.Genero" name="Genero" required #Genero="ngModel">
+          <ion-select-option value="masculino">Masculino</ion-select-option>
+          <ion-select-option value="femenino">Femenino</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-note color="danger" *ngIf="Genero.invalid && Genero.touched">El género es obligatorio.</ion-note>
+
+
+    <!-- Fecha de Nacimiento -->
+    <ion-item [ngClass]="{'invalid-field': fechaNacimiento.invalid && fechaNacimiento.touched}">
+      <ion-label position="floating">Fecha de Nacimiento *</ion-label>
+      <ion-input
+        type="date"
+        [(ngModel)]="usuario.fecha_nacimiento"
+        name="fecha_nacimiento"
+        [min]="minDate"
+        [max]="maxDate"
+        required
+        #fechaNacimiento="ngModel">
+      </ion-input>
+    </ion-item>
+    <ion-note color="danger" *ngIf="fechaNacimiento.invalid && fechaNacimiento.touched">La fecha de nacimiento es obligatoria.</ion-note>
+  </ion-col>
+  <ion-col size="12" size-md="6">
+    <ion-item [ngClass]="{'invalid-field': correoElectronico.invalid && correoElectronico.touched}">
+      <ion-label position="floating">Correo Electrónico *</ion-label>
+      <ion-input
+        type="email"
+        [(ngModel)]="usuario.correo_electronico"
+        name="correo_electronico"
+        required
+        #correoElectronico="ngModel"
+        (ionBlur)="verificarCorreo(usuario.correo_electronico)">
+      </ion-input>
+    </ion-item>
+    <ion-note color="danger" *ngIf="correoElectronico.invalid && correoElectronico.touched">Correo electrónico inválido.</ion-note>
+
+    <!-- Pais de origen -->
+   <ion-item>
+    <ion-label position="floating">País de origen*</ion-label>
+    <ion-select [(ngModel)]="usuario.id_pais_origen" name="pais_origen"  required>
+      <ion-select-option *ngFor="let pais of paises" [value]="pais.id_pais">{{ pais.nombre_pais }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating">Provincia de residencia*</ion-label>
+      <ion-select [(ngModel)]="usuario.id_provincia" name="provincia" (ionChange)="seleccionarCantones()" required>
+        <ion-select-option *ngFor="let provincia of provincias" [value]="provincia.id_provincia">{{ provincia.nombre_provincia }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Cantón -->
+    <ion-item>
+      <ion-label position="floating">Cantón de residencia*</ion-label>
+      <ion-select [(ngModel)]="usuario.id_canton" name="canton" required>
+        <ion-select-option *ngFor="let canton of cantones" [value]="canton.id_canton">{{ canton.nombre_canton }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+
+
+
+    <!-- Teléfono -->
+    <ion-item [ngClass]="{'invalid-field': telefono.invalid && telefono.touched}">
+      <ion-label position="floating">Teléfono *</ion-label>
+      <ion-input type="tel" [(ngModel)]="usuario.telefono" name="telefono" minlength="10" maxlength="10" required (ionInput)="validateNumericInput($event)" #telefono="ngModel"></ion-input>
+    </ion-item>
+    <ion-note color="danger" *ngIf="telefono.invalid && telefono.touched">El teléfono debe tener 10 dígitos.</ion-note>
+
+
+    <ion-label class="center-text"><h2>Autentificación</h2></ion-label>
+    <!-- Usuario -->
+    <ion-item [ngClass]="{'invalid-field': username.invalid && username.touched}">
+      <ion-label position="floating">Usuario *</ion-label>
+      <ion-input type="text" [(ngModel)]="usuario.cedula" name="username" required #username="ngModel" readonly></ion-input>
+      <ion-icon name="information-circle-outline" slot="end" class="info-icon"></ion-icon>
+      <div class="tooltip">
+        Recomendación: Su usuario será su {{ tipoIdentificacion }}.
+      </div>
+    </ion-item>
+    <ion-note color="danger" *ngIf="username.invalid && username.touched">El nombre de usuario es obligatorio.</ion-note>
+
+
+    <!-- Contraseña -->
+    <ion-item [ngClass]="{'invalid-field': contrasena.invalid && contrasena.touched}">
+      <ion-label position="floating">Contraseña *</ion-label>
+      <ion-input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="usuario.contrasena" name="contrasena" required minlength="8" #contrasena="ngModel"></ion-input>
+      <ion-icon name="eye-off-outline" slot="end" (click)="togglePasswordVisibility()" *ngIf="!showPassword"></ion-icon>
+      <ion-icon name="eye-outline" slot="end" (click)="togglePasswordVisibility()" *ngIf="showPassword"></ion-icon>
+    </ion-item>
+    <ion-note color="danger" *ngIf="contrasena.invalid && contrasena.touched">La contraseña es obligatoria y debe tener al menos 8 caracteres.</ion-note>
+
+    <ion-button type="submit" color="secondary"  [disabled]="!validarDatosUsuario()">
+      Siguiente
+    </ion-button>
+  </ion-col>
+  </ion-row>
+  </form>
+
+</ion-card-content>
+</ion-card>

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/detalle-paciente"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Visualizar parámetro biomédico</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <!-- Columna angosta para los parámetros -->
+      <ion-col size="12" size-md="2.5"> <!-- Ajustar tamaño para pantallas grandes -->
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Parámetros</ion-card-title>
+          </ion-card-header>
+          <ion-list class="custom-list">
+            <div *ngFor="let parametro of otrosParametros">
+              <ion-item button (click)="onParametroClick(parametro)" class="custom-button">
+                <ion-icon slot="start" [name]="parametro.icono" class="custom-icon"></ion-icon>
+                {{ parametro.nombre }}
+              </ion-item>
+            </div>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+
+      <!-- Columna principal para el componente -->
+      <ion-col size="12" size-md="9">
+        <ion-card>
+          <ng-container *ngComponentOutlet="componenteADisplay; injector: dynamicComponentInjector"></ng-container>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

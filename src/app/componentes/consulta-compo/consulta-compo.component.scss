@@ -1,0 +1,88 @@
+ion-card {
+    margin: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  ion-card-header {
+    background-color: #4a90e2;
+    color: white;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  ion-card-header ion-title {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  ion-toolbar {
+    --background: transparent;
+  }
+  
+  ion-button[color="Secundary"] {
+    --background: #ff6f61;
+    --color: white;
+  }
+  
+  .section-divider {
+    background-color: #4a90e2;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .paciente-info {
+    background-color: #f0f8ff;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  ion-card {
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+
+  
+  ion-item {
+    --padding-start: 10px;
+  }
+  
+  ion-item ion-label {
+    font-weight: bold;
+  }
+  
+  ion-input,
+  ion-textarea {
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+  }
+  
+  ion-button.expand-full {
+    margin-top: 20px;
+    --background: #4a90e2;
+    --color: white;
+  }
+  
+  .receta-item {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .receta-item ion-label h2 {
+    color: #4a90e2;
+    font-weight: bold;
+  }
+  
+  .receta-item ion-label p {
+    margin: 0;
+  }
+  
+  .receta-item ion-button {
+    margin-top: auto;
+    align-self: flex-start;
+    --background: #ff4d4d;
+    --color: white;
+  }
+  

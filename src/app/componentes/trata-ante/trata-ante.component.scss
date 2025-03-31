@@ -1,0 +1,47 @@
+.recetas-card {
+  margin: 10px;
+  background: #b4dddd; /* Fondo más claro para la tarjeta */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.receta {
+  border: 1px solid #007bff; /* Borde azul para simular una receta médica */
+  border-radius: 10px; /* Bordes redondeados */
+  margin-bottom: 10px; /* Espacio entre recetas */
+  padding: 15px; /* Relleno interno */
+}
+
+.receta-title {
+  font-size: 1.5rem; /* Tamaño de fuente más grande */
+  font-weight: bold; /* Negrita */
+  color: #007bff; /* Color del título */
+}
+
+.receta-date {
+  font-size: 0.9rem; /* Tamaño de fuente más pequeño para la fecha */
+  color: #666; /* Color gris para la fecha */
+}
+
+.receta-label {
+  font-size: 1rem; /* Tamaño de fuente estándar */
+}
+
+.receta-expiration {
+  color: red; /* Color rojo para la fecha de vencimiento */
+}
+
+.no-recetas-card {
+  text-align: center; /* Centrar texto en la tarjeta vacía */
+  margin: 20px;
+  background: #ffcccc; /* Fondo rojo claro */
+  border-radius: 10px;
+}
+
+.no-recetas-content {
+  padding: 20px; /* Espaciado interno */
+}
+
+
+
+

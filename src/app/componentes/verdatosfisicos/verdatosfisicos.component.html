@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="header">Datos Físicos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondo">
+  <ion-grid>
+    <!-- Mostrar mensaje si no hay datos -->
+    <ion-row *ngIf="!datosFisicos.estatura && !datosFisicos.peso" class="ion-justify-content-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-card>
+          <ion-card-content>
+            <ion-card-title>No hay datos disponibles</ion-card-title>
+            <p>Para agregar tus datos de peso y estatura, haz clic en el botón "Editar".</p>
+            <ion-button (click)="editardatosfisicos()">Agregar</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <!-- Tarjetas para los datos físicos -->
+    <ion-row *ngIf="datosFisicos.estatura || datosFisicos.peso">
+      <!-- Tarjeta para Estatura -->
+      <ion-col size="5.5" size-md="2" class="vital-card">
+        <ion-card class="datos-estatura" *ngIf="datosFisicos.estatura">
+          <ion-card-content>
+            <ion-card-title>Estatura</ion-card-title>
+            <img src="assets/img/estatura.png" alt="Estatura" class="icono" />
+            <div class="vital-values">
+              <span class="valor-grande">{{ datosFisicos.estatura }}</span>
+              <h3>m</h3>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <!-- Tarjeta para Peso -->
+      <ion-col size="5.5" size-md="2" class="vital-card">
+        <ion-card class="datos-peso" *ngIf="datosFisicos.peso">
+          <ion-card-content>
+            <ion-card-title>Peso</ion-card-title>
+            <ion-icon name="scale-outline" class="icon-peso"></ion-icon>
+            <div class="vital-values">
+              <span class="valor-grande">{{ datosFisicos.peso }}</span>
+              <h3>kg</h3>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <!-- Tarjeta para IMC -->
+      <ion-col size="12" size-md="4.2" class="vital-card">
+        <ion-card class="datos-imc" *ngIf="datosFisicos.peso && datosFisicos.estatura">
+          <ion-card-header>
+            <ion-card-title>Índice de Masa Corporal (IMC)</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="imc-container">
+              <label class="menaje">
+                El índice de masa corporal es una medida que relaciona tu peso y tu altura.
+                <ion-icon name="information-circle-outline" slot="end" class="info-icon"></ion-icon>
+              </label>
+              <label class="imc-label">
+                <strong>Tu IMC actual:</strong>
+                <span class="imc-value">{{ imc | number: '1.1-1' }}</span>
+                <span class="imc-description">({{ descripcionIMC }})</span>
+              </label>
+              <label class="peso-ideal-label">
+                <strong>Tu peso ideal:</strong>
+                <span class="peso-ideal">
+                  {{ pesoIdealMin | number: '1.1-1' }} kg - {{ pesoIdealMax | number: '1.1-1' }} kg
+                </span>
+              </label>
+              <ion-label class="menaje">
+                "Un peso saludable se logra con equilibrio entre alimentación y ejercicio. ¡Ánimo!" 
+                <ion-icon name="happy-outline"></ion-icon>
+              </ion-label>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <!-- Botón para editar datos -->
+      <ion-col size="4" size-md="2" class="ion-text-center">
+        <ion-button 
+          fill="clear" 
+          (click)="editardatosfisicos()" 
+          class="custom-button">
+          <ion-icon name="create-outline" slot="start" size="large"></ion-icon>
+          Editar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

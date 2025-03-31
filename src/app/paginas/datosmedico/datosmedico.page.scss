@@ -1,0 +1,20 @@
+/* styles.css o global.scss */
+.custom-alert .alert-title {
+    color: blue; /* Cambia a tu color deseado */
+  }
+  
+  .custom-alert .alert-message {
+    color: rgb(128, 0, 122); /* Cambia a tu color deseado */
+  }
+  
+  /* También puedes cambiar el fondo */
+  .custom-alert {
+    background-color: #b0e0cc; /* Cambia a tu color deseado */
+  }
+
+  ion-toolbar {
+    --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+    --color: white; /* Color del texto */
+    --border-color: transparent; /* Elimina el borde */
+  }
+  

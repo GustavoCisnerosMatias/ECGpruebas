@@ -1,0 +1,62 @@
+
+
+  .center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    background-color: #f9f9f9; /* Fondo claro */
+  }
+
+  .recetas-table {
+    width: 100%;
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+    display: block; /* Hace que el contenedor de la tabla sea un bloque para que el desplazamiento funcione */
+  }
+  
+  .paciente-info {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .paciente-info img {
+    width: 130px; /* Ajusta el tamaño de la imagen */
+    height: 130px;
+    border-radius: 50%; /* Para que sea circular */
+    object-fit: cover; /* Asegura que la imagen se ajuste correctamente */
+    margin-bottom: 10px;
+  }
+  
+  h2 {
+    font-size: 24px; /* Tamaño de fuente del nombre */
+    color: #333; /* Color de texto */
+  }
+  
+  h3 {
+    font-size: 18px; /* Tamaño de fuente de la cédula */
+    color: #666; /* Color de texto secundario */
+  }
+  
+  .header-row {
+    background-color: #e0e0e0; /* Fondo gris para el encabezado */
+    font-weight: bold; /* Negrita */
+  }
+  
+  .antecedente-row {
+    background-color: #fff; /* Fondo blanco para las filas de antecedentes */
+    transition: background-color 0.3s; /* Transición suave al pasar el mouse */
+  }
+  
+  .antecedente-row:hover {
+    background-color: #f1f1f1; /* Fondo gris claro al pasar el mouse */
+  }
+  
+  ion-card {
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  .full-width-grid {
+    width: 100%; /* Asegúrate de que el grid ocupe el 100% del ancho */
+  }
+  

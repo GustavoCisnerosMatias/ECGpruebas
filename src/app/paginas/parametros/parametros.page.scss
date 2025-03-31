@@ -1,0 +1,44 @@
+
+.card-contenedor {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;     /* Centra verticalmente */
+  height: 35vh;           /* Ocupa toda la altura de la ventana del navegador */
+  padding: 16px;          /* Espaciado interno */
+        
+  background-color: rgb(1, 31, 41);
+}
+
+/* Estilos para el ion-card */
+.datos-card {
+  width: 55%;              /* Ajusta el ancho del ion-card según sea necesario */
+  //max-width: 600px;        /* Opcional: establece un ancho máximo para el ion-card */
+  background-color: rgb(173, 230, 227); /* Fondo celeste para el ion-card */
+}
+
+/* Estilos para la tabla dentro del ion-card */
+.datos-tabla {
+  width: 100%;             /* Ajusta el ancho de la tabla al 100% del ion-card */
+  border-collapse: collapse;
+}
+
+.datos-tabla th, .datos-tabla td {
+  padding: 8px;
+}
+
+.datos-tabla th {
+  font-size: 1.5rem;       /* Tamaño de fuente más grande para el nombre */
+  font-weight: bold;       /* Negrita */
+  background-color: #e8edf0; /* Fondo gris claro para los encabezados */
+}
+
+.datos-tabla td {
+  font-size: 1.7 rem;         /* Tamaño de fuente para los valores */
+  background-color: #ebeff1; 
+}
+
+.datos-tabla .valor-grande {
+  font-size: 3rem;          /* Tamaño de fuente más grande para el valor */
+  font-weight: bold;        /* Negrita para resaltar */
+}
+

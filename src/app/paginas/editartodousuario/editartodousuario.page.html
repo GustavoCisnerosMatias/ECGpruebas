@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/usuario"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="guardarCambios()" *ngIf="usuario" class="responsive-form">
+    <div class="column">
+    <ion-item>
+      <ion-label position="floating">Cédula</ion-label>
+      <ion-input [(ngModel)]="usuario.cedula" name="cedula" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="usuario.nombre" name="nombre" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input [(ngModel)]="usuario.apellido" name="apellido" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Teléfono</ion-label>
+      <ion-input [(ngModel)]="usuario.telefono" name="telefono" required></ion-input>
+    </ion-item>
+    </div>
+    <div class="column">
+    <ion-item>
+      <ion-label position="floating">Correo Electrónico</ion-label>
+      <ion-input [(ngModel)]="usuario.correo_electronico" name="correo" type="email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Rol</ion-label>
+      <ion-input [(ngModel)]="usuario.id_rol" name="id_rol" required></ion-input>
+      <ion-icon name="information-circle-outline" slot="end" class="info-icon"></ion-icon>
+      <div class="tooltip">
+        Recordar poner solo el id 1:Usuario 2:Administrador 3:Medico
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input [(ngModel)]="usuario.username" name="username" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Estado</ion-label>
+      <ion-select [(ngModel)]="usuario.estado" name="estado" required>
+        <ion-select-option value="A">Activo</ion-select-option>
+        <ion-select-option value="E">Inactivo</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand="full" type="submit">Guardar Cambios</ion-button>
+  </div>
+  </form>
+</ion-content>

@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Reporte total de consultas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondo-componente">
+  <ion-card  >
+    <ion-card-header>
+      <ion-card-title>Gráfico de consultas por mes</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="fondo-componente"size="12" size-md="7" >
+            <div >
+              <ion-item>
+                <ion-label position="floating">Fecha de Inicio</ion-label>
+                <ion-input type="date" [(ngModel)]="fechaInicio"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Fecha de Fin</ion-label>
+                <ion-input type="date" [(ngModel)]="fechaFin"></ion-input>
+              </ion-item>
+              <ion-button (click)="cargarConsultas()">Cargar Consultas</ion-button>
+              <canvas
+                baseChart
+                [datasets]="lineChartData.datasets"
+                [labels]="lineChartData.labels"
+                [options]="chartOptions"
+                [legend]="true"
+                type="line"
+                class="chart">
+              </canvas>
+            </div>
+          </ion-col>
+          <ion-col size="12" size-md="5" >
+            <ion-label>Informacion de pacientes</ion-label>
+            <ion-list class="patients-list">
+              <ion-item *ngFor="let paciente of pacientes" class="patient-item">
+                
+                <ion-label>
+                  <h2>{{ paciente.nombre }} {{ paciente.apellido }}</h2>
+                  <p>Cédula: {{ paciente.cedula }}</p>
+                  <p>Consultas: {{ paciente.cantidad }}</p>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

@@ -1,0 +1,91 @@
+<app-menu></app-menu>
+<ion-router-outlet id="principal"></ion-router-outlet>
+
+<ion-header [translucent]="true">
+  <ion-toolbar >
+    <ion-buttons slot="start"></ion-buttons>
+    <ion-title class="center-title">
+      <ng-container *ngIf="usuarioActual">
+        ¡Hola, {{ usuarioActual.nombre }}!
+      </ng-container>
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-avatar slot="start"></ion-avatar>
+      <ion-menu-button autoHide="false" menu="priMenu" side="start"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="toggleAlertas()">
+      <ion-icon name="notifications-outline"></ion-icon>
+      <ion-badge *ngIf="nuevasAlertas" class="yellow-badge">!</ion-badge>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="salir()">Cerrar
+      <ion-icon name="exit-outline" (click)="salir()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-list class="menu-horizontal">
+    <ion-item
+      *ngFor="let opcion of menuOpciones"
+      (click)="navegar(opcion.men_pagina)"
+      class="menu-item"
+    >
+      <div class="icon-container">
+        <ion-icon
+          [name]="opcion.men_icono"
+          slot="start"
+          [style.color]="generateRandomColor()"
+        ></ion-icon>
+        <!-- Badge cerca del icono -->
+        <ion-badge
+          *ngIf="opcion.men_pagina == '/telemedicina' && nuevosChats > 0"
+          color="primary"
+          class="icon-badge"
+        >
+          {{ nuevosChats }}
+        </ion-badge>
+        <ion-badge
+          *ngIf="opcion.men_pagina == '/pacientes' && nuevosChats > 0"
+          color="primary"
+          class="icon-badge"
+        >
+          {{ nuevosChats }}
+        </ion-badge>
+      </div>
+      <ion-label>{{ opcion.men_descripcion }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+
+
+  <!-- Mostrar el componente AlertasComponent si mostrarAlertas es verdadero -->
+  <app-alertas *ngIf="mostrarAlertas" [id_usuario]="usuarioActual?.id_usuario"></app-alertas>
+
+  <!-- Mostrar el componente ParametrosComponent si mostrarParametros es verdadero -->
+  <!-- <app-parametros *ngIf="mostrarParametros"></app-parametros> -->
+  <app-realtime *ngIf="mostrarParametros"></app-realtime>
+  <app-todasalermedi *ngIf="mostrartodasalermedi"></app-todasalermedi>
+  <app-verdatosfisicos *ngIf="mostrardatos"></app-verdatosfisicos >
+
+
+  <div class="contenedor-icono">
+    <img src="assets/img/Registro2.png" alt="Inicio" class="icono" />
+  </div>
+
+
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+

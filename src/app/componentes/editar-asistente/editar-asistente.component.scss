@@ -1,0 +1,37 @@
+ion-toolbar {
+  --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+  --color: white; /* Color del texto */
+  --border-color: transparent; /* Elimina el borde */
+}
+
+  ion-content {
+    --background: linear-gradient(135deg, #1d88c2, #b3e5fc); /* Color personalizado */
+    --color: rgb(5, 5, 5); /* Color del texto */
+    --border-color: transparent; /* Elimina el borde */
+  }
+
+  .table-header {
+    background-color: #cdd6e7; /* Color de fondo para el encabezado */
+    font-weight: bold; /* Negrita para los encabezados */
+  }
+  ion-grid{
+    background-color: #f5f6f8; /* Color de fondo para el encabezado */
+    font-weight: bold; /* Negrita para los encabezados */
+    width: 99%;
+  }
+  
+  .table-row {
+    border-bottom: 1px solid #e0e0e0; /* Línea divisoria entre filas */
+    padding: 10px 0; /* Espaciado vertical en las filas */
+  }
+  
+  .table-row:hover {
+    background-color: #84aecf; /* Color de fondo al pasar el ratón por encima */
+  }
+  
+  .foto-asistente {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Hace que la imagen sea circular */
+  }
+  

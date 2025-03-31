@@ -1,0 +1,60 @@
+.content {
+  --background: #f0f8ff; /* Fondo azul claro */
+}
+
+.paciente-card {
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #c7e7e9; /* Fondo claro */
+}
+
+.detalles-card {
+  margin-bottom: 20px;
+}
+
+.paciente-foto {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.avatar-grande {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid #007aff; /* Borde azul */
+}
+
+.action-icons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.edit-icon, .save-icon {
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: 15px;
+  color: #0b405f; /* Color azul para los iconos */
+}
+
+.patient-name {
+  color: #4a148c; /* Color púrpura */
+  font-weight: bold;
+}
+
+ion-card-header {
+  --background: #abdfec; /* Color azul claro */
+  color: white; /* Texto blanco */
+}
+
+ion-card-title {
+  font-weight: bold;
+}
+
+ion-toolbar {
+  --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+  --color: white; /* Color del texto */
+  --border-color: transparent; /* Elimina el borde */
+}

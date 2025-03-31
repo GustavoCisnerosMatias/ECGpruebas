@@ -1,0 +1,93 @@
+<ion-header >
+  <ion-toolbar >
+    <ion-title class="header">Signos Vitales hola</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contenedor para signos vitales -->
+<ion-content class="fondo">
+  <ion-grid>
+    <ion-row>
+      <!-- Tarjetas para signos vitales -->
+      <ion-col size="6" size-sm="3" *ngFor="let dato of datos" class="vital-card">
+        <ion-card [ngClass]="getCardClass(dato.variable)">
+          <ion-card-header>
+            <ion-card-title>{{ dato.variable }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="carconten">
+            <div class="vital-values">
+              <span class="valor-grande">{{ dato.value }}</span>
+              <span>{{ dato.unit }}</span>
+             
+              <img *ngIf="dato.variable === 'temperatura'" src="assets/img/temperatura.gif" alt="Temperatura" class="icono" />
+              <img *ngIf="dato.variable === 'frecuencia'" src="assets/img/electrocardiograma.gif" alt="Frecuencia Cardíaca" class="icono" />
+              <img *ngIf="dato.variable === 'oxigeno'" src="assets/img/oximetro.gif" alt="Saturación de Oxígeno" class="icono" />
+              <ion-icon *ngIf="!['temperatura', 'frecuencia', 'oxigeno'].includes(dato.variable)" name="heart" alt="Otro" class="icono"></ion-icon>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      
+    </ion-row>
+
+      <!-- Tarjeta para Peso -->
+       <ion-row>
+      <ion-col size="6" size-md="3" class="vital-card">
+        <ion-card class="datos-peso" *ngIf="datosFisicos.peso">
+          <ion-card-header>
+            <ion-card-title>Peso</ion-card-title>
+            
+          </ion-card-header>
+          <ion-card-content>
+            <div class="vital-values">
+              <span class="valor-grande">{{ datosFisicos.peso }}</span>
+              <span>kg</span>
+              <img src="assets/img/peso1.gif" alt="Peso" class="icono" />
+            </div>
+            <label>
+              <strong>Tu IMC actual: </strong>
+              <span class="imc-value">{{ imc | number: '1.1-1' }}</span>
+              <span class="imc-description">({{ descripcionIMC }})</span>
+            </label>
+            <label>
+              <strong>  Tu peso ideal: </strong>
+              <span class="peso-ideal">
+                {{ pesoIdealMin | number: '1.1-1' }} kg - {{ pesoIdealMax | number: '1.1-1' }} kg
+              </span>
+            </label>
+          </ion-card-content>
+          
+        </ion-card>
+      </ion-col>
+      <!-- Tarjeta para Estatura -->
+      <ion-col size="6" size-md="3" class="vital-card">
+        <ion-card class="datos-estatura" *ngIf="datosFisicos.estatura">
+          <ion-card-header>
+            <ion-card-title>Estatura</ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="carconten">
+            <div >
+              <span class="valor-grande">{{ datosFisicos.estatura }}</span>
+              <span>m</span>
+              <img src="assets/img/estatura.png" alt="Estatura" class="icono" />
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+     
+
+      
+
+    <!-- Mensaje de error -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-text color="danger" *ngIf="mensajeError" class="error-message">
+          {{ mensajeError }}
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
