@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/usuario"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Alertas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <!-- Datos del Paciente -->
+  <ion-card class="custom-card">
+    <ion-card-header class="card-header" id="contenido-a-imprimir">
+      <ion-card-title>Datos del paciente</ion-card-title>
+     
+    </ion-card-header>
+    <ion-card-content class="card-content" id="contenido-a-imprimir1">
+      <ion-row>
+        <ion-col size="6">
+          <p><strong>Nombre:</strong> {{ paciente?.apellido }}</p>
+          <p><strong>Apellido:</strong> {{ paciente?.cedula }}</p>
+        </ion-col>
+        <ion-col size="6">
+          <p><strong>Cédula:</strong> {{ paciente?.nombre }}</p>
+          <p><strong>Teléfono:</strong> {{ paciente?.telefono }}</p>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Campos para seleccionar fechas -->
+  <ion-item>
+    <ion-label position="floating">Fecha de inicio</ion-label>
+    <ion-input type="date" [(ngModel)]="fecha_ini"(ionChange)="onFechaChange()"></ion-input>
+  </ion-item>
+
+  <!-- Fecha de Fin -->
+  <ion-item>
+    <ion-label position="floating">Fecha de fin</ion-label>
+    <ion-input type="date" [(ngModel)]="fecha_fin"(ionChange)="onFechaChange()"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Buscar alerta por nombre</ion-label>
+    <ion-input [(ngModel)]="searchTerm" (ionInput)="filterAlertas()" debounce="500"></ion-input>
+  </ion-item>
+
+  <!-- Mostrar las Alertas -->
+  <ion-card *ngIf="alertas.length > 0" class="alertas-card" id="contenido-a-imprimir2">
+    <ion-card-header>
+      <ion-card-title>Alertas del paciente</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let alerta of filterAlertas()" class="alert-item">
+          <ion-icon name="alert-circle-outline" slot="start" color="danger"></ion-icon>
+          <ion-label>
+            <h2>{{ alerta.nombre_alerta }}</h2>
+            
+            <p><strong>Fecha:</strong> {{ alerta.fecha_alerta }}</p>
+            <p><strong>Valor:</strong> {{ alerta.valor }} {{ alerta.unidad_medida }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Sin Alertas -->
+  <ion-card *ngIf="alertas.length === 0" class="alertas-card">
+    <ion-card-content>
+      <p class="no-alerts">No hay alertas disponibles para este paciente.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Botón de impresión -->
+  <ion-button  (click)="imprimir()">
+    <ion-icon slot="icon-only" name="print"></ion-icon>
+  </ion-button>
+</ion-content>

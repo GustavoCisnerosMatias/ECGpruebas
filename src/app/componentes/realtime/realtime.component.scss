@@ -1,0 +1,142 @@
+.header {
+  text-align: center;
+  font-weight: bold;
+}
+
+.vital-card {
+  margin-bottom: 20px; /* Añadir espacio entre las tarjetas */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.vital-values {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7px;
+}
+.icono-rojo {
+  color: red;
+}
+
+.icono-azul {
+  color: blue;
+}
+
+.icono-verde {
+  color: green;
+}
+
+.valor-grande {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.fondo {
+  --background: #7fa3b8;
+}
+
+ion-toolbar {
+  --background: #82ccfa7c;
+}
+
+.carconten {
+  text-align: center;
+}
+
+.icono {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+  vertical-align: middle;
+  transition: transform 0.3s;
+}
+
+.icono:hover {
+  transform: scale(2);
+}
+
+.loading-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.tooltip {
+  display: none;
+  background-color: rgba(138, 51, 51, 0.75);
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 12px;
+  position: absolute;
+  z-index: 1;
+}
+
+.info-icon:hover + .tooltip {
+  display: block;
+}
+
+.mensaje {
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 16px;
+  text-align: center;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.mensaje-icono {
+  font-size: 65px;
+  margin-right: 10px;
+}
+
+.mensaje-temperatura {
+  background-color: #e0f7fa;
+  color: #00796b;
+  font-weight: bold;
+}
+
+.mensaje-corazon {
+  background-color: #ffe0e0;
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+.mensaje-oxigeno {
+  background-color: #f1f8e9;
+  color: #388e3c;
+  font-weight: bold;
+}
+
+/* Estilo para el contenedor de signos vitales */
+.signos-vitales-grid {
+  margin-top: 16px; /* Añadir espacio superior */
+}
+
+ion-row {
+  justify-content: center; /* Centra las columnas en el row */
+}
+.vital-card {
+  margin-bottom: 12px; /* Ajusta el margen entre tarjetas */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+}
+
+ion-row {
+  --ion-grid-padding: 10px; /* Asegura que las tarjetas tengan espacio */
+}
+
+ion-col {
+  padding: 15px; /* Asegura que haya espacio entre las columnas */
+}

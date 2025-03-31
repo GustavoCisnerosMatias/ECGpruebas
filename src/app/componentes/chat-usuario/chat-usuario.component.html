@@ -1,0 +1,34 @@
+<ion-content class="chat-container">
+  <div class="chat-container">
+    <div class="header">
+      <h1>Chat directo</h1>
+      <ion-buttons slot="end">
+        <ion-button class="close-button" (click)="cerrarChat()">✖</ion-button>
+      </ion-buttons>
+    </div>
+    <div class="messages">
+      <div *ngFor="let mensaje of mensajes" [ngClass]="{
+          'message-sent': mensaje.id_rol === autentificacionService.idRol,
+          'message-received': mensaje.id_rol !== autentificacionService.idRol
+        }">
+        
+        <p *ngIf="mensaje.id_rol === autentificacionService.idRol">Tu</p>
+        <p *ngIf="mensaje.id_rol === autentificacionService.idRol">{{ mensaje.mensaje }}</p>
+        <p *ngIf="mensaje.id_rol !== autentificacionService.idRol">{{ mensaje.mensaje }}</p>
+        <small>{{ mensaje.fecha_envio | date:'short' }}</small>
+        
+        <!-- Indicador "visto" para mensajes enviados -->
+        <span *ngIf="mensaje.id_rol === autentificacionService.idRol && mensaje.visto" class="seen-indicator">✔️ Visto</span>
+        
+        <!-- Indicador "visto" para mensajes recibidos -->
+        <span *ngIf="mensaje.id_rol !== autentificacionService.idRol && mensaje.visto" class="seen-indicator">✔️ Visto</span>
+      </div>
+    </div>
+    <div class="footer">
+      <ion-item>
+        <ion-input [(ngModel)]="nuevoMensaje" (keyup.enter)="enviarMensaje()" placeholder="Escribe tu mensaje"></ion-input>
+        <ion-button (click)="enviarMensaje()" color="primary">Enviar</ion-button>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>

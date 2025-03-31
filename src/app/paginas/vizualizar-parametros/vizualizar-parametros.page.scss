@@ -1,0 +1,60 @@
+
+  .custom-list {
+    margin: 0; /* Asegurarte de que no haya margen adicional */
+    padding: 0; /* Sin padding adicional */
+  }
+
+  .custom-button {
+    --background: transparent; /* Fondo transparente para el botón */
+    --border-radius: 8px; /* Bordes redondeados */
+    margin: 8px 0; /* Espaciado vertical entre botones */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    transition: transform 0.2s; /* Transición para efectos */
+  }
+
+  .custom-button:hover {
+    transform: scale(1.05); /* Efecto de ampliación al pasar el mouse */
+  }
+
+  .custom-icon {
+    font-size: 3 em; /* Tamaño del icono */
+    color: #033625; /* Color del icono */
+  }
+
+  ion-card {
+    margin: 16px 0; /* Margen entre tarjetas */
+  }
+
+
+  ion-toolbar {
+    --background: linear-gradient(135deg, #1d88c2, #b3e5fc); /* Color personalizado */
+    --color: white; /* Color del texto */
+    --border-color: transparent; /* Elimina el borde */
+  }
+
+
+  ion-toolbar {
+    --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+    --color: white; /* Color del texto */
+    --border-color: transparent; /* Elimina el borde */
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+ 
+  
+ 

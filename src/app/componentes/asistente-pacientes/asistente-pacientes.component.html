@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/pacientes-asistente"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalles del Paciente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="paciente">
+  <ion-card class="paciente-card">
+    <div class="paciente-foto">
+      <ion-avatar class="avatar-grande">
+        <img [src]="paciente.foto_base64" alt="Foto de {{ paciente.nombre }}">
+      </ion-avatar>
+    </div>
+
+    
+      <ion-card-title>{{ paciente.nombre }} {{ paciente.apellido }}</ion-card-title>
+
+  </ion-card>
+
+  <ion-card class="detalles-card">
+    <ion-card-header>
+      <ion-card-title>Información Personal</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <p><strong>Teléfono:</strong> {{ paciente.telefono }}</p>
+          </ion-col>
+          <ion-col>
+            <p><strong>Correo:</strong> {{ paciente.correo_electronico }}</p>
+          </ion-col>
+          
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <p><strong>Cédula:</strong> {{ paciente.cedula }}</p>
+          </ion-col>
+          <ion-col>
+            <p><strong>Edad:</strong> {{ calcularEdad(paciente.fecha_nacimiento) }} años</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="detalles-card">
+    <ion-card-header>
+      <ion-card-title>Datos Físicos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Peso (kg)</ion-label>
+        <ion-input
+          [disabled]="!editable"
+          [(ngModel)]="datosFisicos.peso"
+          type="number"
+          placeholder="Peso"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Estatura (m)</ion-label>
+        <ion-input
+          [disabled]="!editable"
+          [(ngModel)]="datosFisicos.estatura"
+          type="number"
+          placeholder="Estatura"></ion-input>
+      </ion-item>
+
+      <div class="action-icons">
+        <ion-icon
+          name="create-outline"
+          (click)="habilitarEdicion()"
+          class="edit-icon">
+        </ion-icon>
+        <ion-icon
+          name="save-outline"
+          *ngIf="editable"
+          (click)="guardarDatosFisicos()"
+          class="save-icon">
+        </ion-icon>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,15 @@
+<ion-content>
+  <ng-container *ngIf="pasoActual === 'usuario'">
+    <app-crear-usuario (usuarioCreado)="avanzarAlSiguientePaso($event)"[datos]="usuario"></app-crear-usuario>
+  </ng-container>
+
+  <ng-container *ngIf="pasoActual === 'datosFisicos'">
+    <app-datos-fisicos (datosFisicosCreado)="avanzarAlSiguientePaso($event)"(anterior)="retrocederAlPasoAnterior()"[datos]="datosFisicos"></app-datos-fisicos>
+  </ng-container>
+
+  <ng-container *ngIf="pasoActual === 'dispositivo'">
+    <app-dispositivo (dispositivoCreado)="registrarCliente($event)"(anterior)="retrocederAlPasoAnterior()"[datos]="dispositivo"></app-dispositivo>
+  </ng-container>
+</ion-content>
+
+

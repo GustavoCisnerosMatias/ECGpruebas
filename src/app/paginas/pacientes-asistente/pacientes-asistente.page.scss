@@ -1,0 +1,32 @@
+.asistente-item {
+    margin: 10px 0;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    transition: background-color 0.2s;
+  
+    &:hover {
+      background-color: #e6e6e6;
+    }
+  
+    ion-avatar {
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  
+    ion-label h2 {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  
+    ion-label p {
+      margin: 0;
+      color: #666;
+    }
+  }
+  ion-toolbar {
+    --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+    --color: white; /* Color del texto */
+    --border-color: transparent; /* Elimina el borde */
+  }

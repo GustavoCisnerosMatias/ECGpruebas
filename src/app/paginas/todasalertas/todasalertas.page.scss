@@ -1,0 +1,55 @@
+.custom-row {
+    border: 2px solid #7babca; /* Cambia el color según lo necesites */
+    border-radius: 8px; /* Ajusta los bordes si es necesario */
+    margin-bottom: 10px; /* Ajusta el margen entre filas */
+    padding: 5px; /* Ajusta el padding para espacio interno */
+  }
+  .profile-card {
+    background-color: rgba(57, 102, 155, 0.1); /* Fondo azul opaco */
+    padding: 5px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    margin-top: 15px; /* Espaciado superior */
+    
+    width: 400px; /* Ancho específico */
+    height: 150px; /* Altura específica */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+  }
+  
+  ion-toolbar {
+    --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+    --color: white; /* Color del texto */
+    --border-color: transparent; /* Elimina el borde */
+  }
+  /* Estilos para el grid */
+#contenido-a-imprimir {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Encabezado de la tabla */
+.table-header {
+  font-weight: bold;
+  background-color: #f4f4f4;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Estilo para las celdas de datos */
+.table-data {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+/* Resaltado de alertas nuevas */
+.highlight-new {
+  background-color: #ffdddd;
+  font-weight: bold;
+}
+
+/* Asegurarse de que los badges se alineen correctamente */
+ion-badge {
+  font-size: 13px;
+  padding: 4px 8px;
+}

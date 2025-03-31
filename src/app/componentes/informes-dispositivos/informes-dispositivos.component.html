@@ -1,0 +1,112 @@
+<ion-card>
+<ion-card-header>
+  <ion-toolbar>
+    <ion-card-title>Reporte estadísticos de dispositivos</ion-card-title>
+  </ion-toolbar>
+</ion-card-header>
+
+<ion-card-content>
+  <div class="estadisticas-container">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <h2>Nuevos Dispositivos  por Mes</h2>
+          <div #grafico class="chart-container">
+            <canvas baseChart
+                [datasets]="[
+                  {
+                    data: conteoDispositivosPorMes,
+                    label: 'Total de dispositivos por mes',
+                    backgroundColor: ['#4D9DE0', '#E15554', '#3BB273', '#7768AE', '#F7CB15', '#5D576B', '#6B4226', '#FF6F61', '#88B04B', '#92A8D1', '#034F84', '#F7786B'],
+                    borderColor: '#333333',
+                    borderWidth: 1
+                  }
+                ]"
+                [labels]="meses"
+                [options]="{ responsive: true, maintainAspectRatio: false }"
+                type="line">
+            </canvas>
+          </div>
+        </ion-col>
+  
+        <ion-col size="12">
+          <h2>Total de dispositivos por año</h2>
+          <div #grafico1 class="chart-container">
+            <canvas baseChart
+                [datasets]="[
+                  {
+                    data: totalDispositivosPorAnio,
+                    label: 'Total de Dispositivos por año',
+                    backgroundColor: ['#008080', '#D2691E', '#FFD700', '#FF7F50', '#4682B4', '#6A5ACD', '#20B2AA', '#FF6347', '#708090', '#C71585', '#B0C4DE', '#32CD32'],
+                    borderColor: '#333333',
+                    borderWidth: 1
+                  }
+                ]"
+                [labels]="anios"
+                [options]="{ responsive: true, maintainAspectRatio: false }"
+                type="line">
+            </canvas>
+          </div>
+        </ion-col>
+
+        
+ 
+        
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="estadisticas-container">
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12" size-lg="6" class="section">
+                <ion-grid class="estadisticas-tabla">
+                  <h2 class="section-title">Datos por mes</h2>
+                  
+                  <ion-row class="header-row">
+                    <ion-col size="2.5"><strong>Meses</strong></ion-col>
+                    <ion-col size="2.5"><strong>Dispositivos nuevos</strong></ion-col>
+                    <ion-col size="2"><strong>Total de dispositivos</strong></ion-col>
+                    <ion-col size="3"><strong>Cambio mensual de nuevos dispositivos</strong></ion-col>
+                    <ion-col size="2"><strong>Tasa de crecimiento</strong></ion-col> <!-- Nueva columna -->
+                  </ion-row>
+                  <ion-row *ngFor="let estadistica of estadisticasPorMes" class="data-row">
+                    <ion-col size="2.5">{{ estadistica.mes }}</ion-col>
+                    <ion-col size="2.5">{{ estadistica.dispositivosNuevos }}</ion-col>
+                    <ion-col size="2">{{ estadistica.totalDispositivos }}</ion-col>
+                    <ion-col size="3">{{ estadistica.cambioMensual }}</ion-col>
+                    <ion-col size="2">{{ estadistica.tasaCrecimiento }}</ion-col> <!-- Muestra la tasa de crecimiento -->
+                  </ion-row>
+                  
+                  
+                </ion-grid>
+            </ion-col>
+
+            <ion-col size="12" size-lg="6" class="section">
+                <ion-grid class="estadisticas-tabla">
+                    <h2 class="section-title">Datos por año</h2>
+                    <ion-row class="header-row">
+                      <ion-col size="1.5"><strong>Año</strong></ion-col>
+                      <ion-col size="2"><strong>Dispositivos nuevos</strong></ion-col>
+                      <ion-col size="2"><strong>Total de dispositivos</strong></ion-col>
+                      <ion-col size="2"><strong>Tasa de crecimiento  Anual</strong></ion-col>
+                      <ion-col size="2"><strong>Dispositivos Activos</strong></ion-col>
+                      <ion-col size="2.5"><strong>Dispositivos Inactivos</strong></ion-col>
+                    </ion-row>
+                    <ion-row *ngFor="let estadistica of estadisticasPorAnio" class="data-row">
+                      <ion-col size="1.5">{{ estadistica.anio }}</ion-col>
+                      <ion-col size="2">{{ estadistica.dispositivosNuevos }}</ion-col>
+                      <ion-col size="2">{{ estadistica.totalDispositivos }}</ion-col>
+                      <ion-col size="2">{{ estadistica.tasaCrecimiento }}</ion-col>
+                      <ion-col size="2">{{ estadistica.dispositivosActivos }}</ion-col> <!-- Nueva columna para activos -->
+                      <ion-col size="2.5">{{ estadistica.dispositivosInactivos }}</ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>
+<ion-button (click)="generarPDF()">Imprimir Reporte</ion-button>
+
+
+</ion-card-content>
+</ion-card>

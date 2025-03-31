@@ -1,0 +1,23 @@
+.profile-card {
+    background-color: rgba(71, 119, 173, 0.1); /* Fondo azul opaco */
+    padding: 5px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    height: 40%;
+    margin-top: 15px;
+  }
+
+  .profile-options {
+    ion-button {
+      width: 100%; /* Ocupa todo el ancho disponible */
+      margin-bottom: 10px; /* Espacio entre cada botón */
+      --background: #7fa4ce; /* Color de fondo */
+      --color: white; /* Color del texto */
+      --border-radius: 8px; /* Radio de los bordes */
+      --box-shadow: none; /* Eliminar sombra si es necesario */
+    }
+  }
+  ion-toolbar {
+    --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+    --color: white; /* Color del texto */
+    --border-color: transparent; /* Elimina el borde */
+  }  

@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Plataforma de Monitoreo</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="navigateToLogin()">Iniciar Sesión</ion-button>
+      <ion-button (click)="navigateToDownloadApp()">Descargar App móvil</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+ 
+  <!-- Sección de imágenes destacadas -->
+  <div class="image-gallery">
+    <ion-card class="image-card">
+      <img src="assets/img/moni.png" alt="Monitoreo en Tiempo Real" />
+      <ion-card-header>
+        <ion-card-title>Monitoreo en Tiempo Real</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Monitorea la salud de tus pacientes desde cualquier lugar.
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="image-card">
+      <img src="assets/img/ges.png" alt="Gestión de Pacientes" />
+      <ion-card-header>
+        <ion-card-title>Gestión de Pacientes</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Gestiona la información de tus pacientes y accede a su historial médico.
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="image-card">
+      <img src="assets/img/aler.png" alt="Alertas de Salud" />
+      <ion-card-header>
+        <ion-card-title>Alertas de Salud</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Recibe alertas para actuar rápidamente ante cualquier cambio en la salud de tus pacientes.
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+ <!-- Información de redes sociales -->
+<div class="social-media">
+  <ion-button href="https://facebook.com/tuPagina" target="_blank" class="social-btn facebook-btn">
+    <ion-icon slot="start" name="logo-facebook"></ion-icon>
+  </ion-button>
+  <ion-button href="https://twitter.com/tuPagina" target="_blank" class="social-btn twitter-btn">
+    <ion-icon slot="start" name="logo-twitter"></ion-icon>
+  </ion-button>
+  <ion-button href="https://instagram.com/tuPagina" target="_blank" class="social-btn instagram-btn">
+    <ion-icon slot="start" name="logo-instagram"></ion-icon>
+  </ion-button>
+</div>
+
+</ion-content>

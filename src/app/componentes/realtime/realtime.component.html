@@ -1,0 +1,102 @@
+<ion-card>
+  <ion-card-header>
+    <ion-toolbar>
+      <ion-title class="header">Signos Vitales</ion-title>
+    </ion-toolbar>
+  </ion-card-header>
+
+  <!-- Contenedor para signos vitales -->
+  <ion-card-content class="fondo">
+    <!-- Mensaje de carga -->
+    <div *ngIf="isLoading" class="loading-message">
+      <ion-icon name="information-circle-outline" slot="end" class="info-icon"></ion-icon>
+      <div class="tooltip">
+        <h2>Información</h2>
+        <p> Si la carga tarda mucho, revise su conexión a Internet.</p>
+        <p> Tiene que estar utilizando bien el dispositivo.</p>
+      </div>
+      <p>Espere un momento</p>
+      <p>Obteniendo datos <ion-spinner name="dots"></ion-spinner></p>
+    </div>
+
+    <!-- Contenedor para los signos vitales -->
+    <div *ngIf="!isLoading">
+      <ion-grid class="signos-vitales-grid">
+        <ion-row justify-content="center">
+          <!-- Tarjetas para signos vitales -->
+          <ion-col size="6" size-sm="3" *ngFor="let dato of datos" class="vital-card">
+            <ion-card [ngClass]="getCardClass(dato.id_parametro)">
+              <ion-card-header>
+                <h2 class="vital-values">
+                  {{ obtenerNombreParametro(dato.id_parametro) }}
+                </h2>
+              </ion-card-header>
+              <ion-card-content class="carconten">
+                <div class="vital-values">
+                  <h1 class="valor-grande">{{ dato.valor }}</h1>
+                 
+                  <ion-icon 
+                    *ngIf="dato.id_parametro === 1"
+                    name="thermometer-outline"
+                    alt="Temperatura"
+                    class="icono"
+                    [ngClass]="determinarClase(dato.valor)">
+                  </ion-icon>
+                  <ion-icon 
+                  *ngIf="dato.id_parametro === 2"
+                  name="pulse-outline"
+                  alt="Frecuencia Cardíaca" 
+                  class="icono" 
+                  [ngStyle]="{ 'color': obtenerColorFrecuencia(dato.valor) }">
+                </ion-icon>
+                
+                 
+                  <img *ngIf="dato.id_parametro === 5" src="assets/img/oximetro.gif" alt="Saturación de Oxígeno" class="icono" />
+                  <ion-icon *ngIf="![1, 2, 5].includes(dato.id_parametro)" name="heart" alt="Otro" class="icono"></ion-icon>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div>
+      <ion-row justify-content="center">
+        <ion-col size="12" size-md="4">
+          <div class="mensaje mensaje-oxigeno">
+            <ion-icon name="pulse-outline" class="mensaje-icono"></ion-icon>
+            Un nivel adecuado de oxígeno en la sangre es esencial para el buen funcionamiento de tu cuerpo. ¡Mantente activo y cuida tu respiración!
+          </div>
+        </ion-col>
+        
+        <ion-col size="12" size-md="4">
+          <div class="mensaje mensaje-corazon">
+            <ion-icon name="heart-circle-outline" class="mensaje-icono"></ion-icon>
+            "Una frecuencia cardíaca saludable es clave para mantener un corazón fuerte. ¡Escucha a tu cuerpo y cuida tu bienestar!"
+          </div>
+        </ion-col>
+        <ion-col size="12" size-md="4">
+          <div class="mensaje mensaje-temperatura">
+            <ion-icon name="thermometer-outline" class="mensaje-icono"></ion-icon>
+            Una temperatura corporal estable es signo de buena salud. ¡Recuerda cuidarte y monitorear tu bienestar!
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-card-content>
+</ion-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

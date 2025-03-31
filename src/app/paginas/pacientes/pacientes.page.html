@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Pacientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar 
+    [(ngModel)]="searchTerm" 
+    (ionInput)="filtrarPacientes($event)"
+    placeholder="Buscar por nombre..."
+    animated>
+  </ion-searchbar>
+
+  <ion-card class="profile-card">
+    <ion-card-header>
+      <ion-card-title>Lista de Pacientes</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item-sliding *ngFor="let paciente of pacientesFiltrados">
+          <ion-item detail (click)="verDetallePaciente(paciente.id_usuario, paciente.cedula, paciente.nombre, paciente.apellido, paciente.telefono)">
+            <ion-grid>
+              <ion-row class="ion-align-items-center">
+                <ion-col size="12" size-md="2">
+                  <ion-icon name="id-card" slot="start"></ion-icon>
+                  <h3>Identificación</h3>
+                  <p>{{ paciente.cedula }}</p>
+                </ion-col>
+                <ion-col size="12" size-md="4">
+                  <ion-icon name="person" slot="start"></ion-icon>
+                  <h3>Nombre y Apellido</h3>
+                  <p>{{ paciente.nombre }} {{ paciente.apellido }}</p>
+                </ion-col>
+                <ion-col size="12" size-md="3">
+                  <ion-icon name="call" slot="start"></ion-icon>
+                  <h3>Teléfono</h3>
+                  <p>{{ paciente.telefono }}</p>
+                </ion-col>
+                <ion-col size="12" size-md="3">
+                  <ion-badge color="primary" *ngIf="paciente.nuevosChats > 0">
+                    {{ paciente.nuevosChats }} nuevos
+                  </ion-badge>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+          
+          
+          
+        </ion-item-sliding>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

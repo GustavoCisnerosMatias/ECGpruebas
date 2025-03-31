@@ -1,0 +1,80 @@
+/* Estilos generales */
+ion-grid {
+  padding: 0 10px;
+}
+
+.table-header {
+  background-color: #e0e0e0;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 5px;
+}
+
+.table-row {
+  background-color: #f9f9f9;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  align-items: center;
+}
+
+ion-col {
+  text-align: center;
+  font-size: 0.9rem;
+  color:#070505
+}
+
+ion-button {
+  --background: #007bff;
+  --background-activated: #0056b3;
+  color: rgb(7, 0, 0);
+  font-size: 0.8rem;
+}
+
+/* Pantallas pequeñas */
+@media (max-width: 768px) {
+  .table-desktop {
+    display: none; /* Oculta la tabla */
+  }
+
+  .table-mobile {
+    display: block;
+  }
+
+  .card {
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  .card ion-label h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+
+  .card ion-label p {
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  .card ion-button {
+    --border-radius: 5px;
+    --color: #007bff;
+    --background: white;
+    border: 1px solid #007bff;
+  }
+}
+
+/* Pantallas grandes */
+@media (min-width: 769px) {
+  .table-mobile {
+    display: none;
+  }
+}
+ion-toolbar {
+  --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+  --color: white; /* Color del texto */
+  --border-color: transparent; /* Elimina el borde */
+}  

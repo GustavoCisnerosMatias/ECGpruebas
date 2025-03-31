@@ -1,0 +1,87 @@
+.profile-card {
+    background-color: rgba(71, 119, 173, 0.1); /* Fondo azul opaco */
+    padding: 5px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    
+    margin-top: 15px;
+  }
+  ion-content {
+    --padding-bottom: 20px;
+    --padding-start: 10px;
+    --padding-end: 10px;
+  }
+  
+  .profile-card {
+    margin: 10px;
+    @media (min-width: 576px) {
+      margin: 20px;
+    }
+    @media (min-width: 768px) {
+      margin: 30px;
+    }
+  }
+  
+  ion-label h2 {
+    font-size: 1.2em;
+  }
+  
+  ion-label p {
+    font-size: 1em;
+  }
+  
+  ion-button {
+    margin-top: 20px;
+    @media (min-width: 576px) {
+      margin-top: 30px;
+    }
+    @media (min-width: 768px) {
+      margin-top: 40px;
+    }
+  }
+  
+  ion-list {
+    max-height: 60vh; /* Limita la altura máxima de la lista */
+    overflow-y: auto; /* Añade scroll vertical si es necesario */
+  }
+  
+  ion-item {
+    --inner-padding-top: 10px;
+    --inner-padding-bottom: 10px;
+  }
+  
+  ion-item-sliding {
+    margin-bottom: 10px;
+  }
+  
+  ion-card-content {
+    padding: 0; /* Elimina el padding para mejor ajuste */
+  }
+  
+  .inhabilitado {
+    background-color: #f8d7da; /* Rojo claro o cualquier color que prefieras */
+    color: #b9b0b1; /* Color del texto */
+  }
+  
+  .large-avatar {
+    width: 80px;  // Ajusta este valor a tu preferencia
+    height: 80px; // Ajusta este valor a tu preferencia
+    overflow: hidden; // Para asegurar que la imagen no se salga del contenedor
+  }
+  
+  .large-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Para mantener la proporción de la imagen
+  }
+  ion-toolbar {
+    --background: linear-gradient(135deg, #1d88c2, #b3e5fc); /* Color personalizado */
+    --color: white; /* Color del texto */
+    --border-color: transparent; /* Elimina el borde */
+  }
+
+
+  .contenedor-pequeño {
+    max-width: 700px; /* Ancho máximo del contenedor */
+    margin: 0 auto;   /* Centrado en la pantalla */
+    padding: 16px;    /* Un poco de relleno */
+  }

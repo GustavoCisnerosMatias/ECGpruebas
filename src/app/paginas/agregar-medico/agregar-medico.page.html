@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/usuario"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Agregar médico</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contenedor-pequeño">
+  <!-- Sección para seleccionar médico -->
+  <ion-list>
+    <ion-item>
+      <ion-label>Seleccionar médico</ion-label>
+      <ion-select (ionChange)="seleccionarMedico($event)">
+        <ion-select-option *ngFor="let medico of listaMedicos" [value]="medico.id_medico">
+          {{ medico.nombre }} {{ medico.apellido }} - {{ medico.nombre_centro }} - {{ medico.nombre_esp }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-button color="secondary" (click)="guardarRelacion()">Guardar Médico</ion-button>
+
+  <!-- Sección para mostrar médicos obtenidos por usuario -->
+
+  <ion-searchbar 
+      [(ngModel)]="searchTerm"
+      (ionInput)="filtrarMedicos($event)" 
+      placeholder="Buscar por nombre o apellido">
+    </ion-searchbar>
+
+    <ion-card class="profile-card">
+      <ion-card-header>
+        <ion-card-title>Lista médicos</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item-sliding *ngFor="let medico of medicosFiltrados">
+            <ion-item [ngClass]="{'inhabilitado': medico.estado === 'I'}">
+              <!-- Mostrar la foto del médico -->
+              <ion-avatar slot="start" *ngIf="medico.foto_base64" class="large-avatar">
+                <img [src]="'data:image/jpeg;base64,' + medico.foto_base64" alt="Foto del médico">
+              </ion-avatar>
+              <ion-avatar slot="start" *ngIf="!medico.foto_base64" class="large-avatar">
+                <img src="assets/img/Registro2.png" alt="Sin foto">
+              </ion-avatar>
+
+              <ion-label>
+                <h2>Medico: {{ medico.nombre }} {{ medico.apellido }}</h2>
+                <p>Centro Hospitalario: {{ medico.nombre_centro }}</p>
+                <p>Especialidad: {{ medico.nombre_esp }}</p>
+              </ion-label>
+            </ion-item>
+    
+            <ion-item-options side="end">
+              <!-- Opciones adicionales -->
+              <ion-item-option *ngIf="medico.estado === 'A'" color="danger" (click)="cambiarEstadoMedico(medico, 'I')">
+                <ion-icon slot="icon-only" name="remove-circle"></ion-icon> Inhabilitar
+              </ion-item-option>
+              <ion-item-option *ngIf="medico.estado === 'I'" color="success" (click)="cambiarEstadoMedico(medico, 'A')">
+                <ion-icon slot="icon-only" name="checkmark-circle"></ion-icon> Habilitar
+              </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+

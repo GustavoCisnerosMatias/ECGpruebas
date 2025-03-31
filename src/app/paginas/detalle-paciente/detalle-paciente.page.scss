@@ -1,0 +1,11 @@
+
+ 
+  ion-back-button {
+    display: block;
+    visibility: visible;
+  }
+   ion-toolbar {
+    --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+    --color: white; /* Color del texto */
+    --border-color: transparent; /* Elimina el borde */
+  }

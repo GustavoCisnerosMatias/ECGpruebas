@@ -1,0 +1,45 @@
+ion-toolbar {
+  --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+  --color: white; /* Color del texto */
+  --border-color: transparent; /* Elimina el borde */
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  background-color: #f9f9f9; /* Fondo claro */
+}
+
+.paciente-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.paciente-info img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+ion-card {
+  margin: 10px;
+  transition: transform 0.3s;
+}
+
+ion-card:hover {
+  transform: scale(1.05);
+}
+
+h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+h3 {
+  font-size: 18px;
+  color: #666;
+}

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Pacientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar 
+    [(ngModel)]="busqueda" 
+    (ionInput)="buscarAsistentes()" 
+    placeholder="Buscar por nombre, apellido o cédula">
+  </ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let paciente of asistentesFiltrados" class="asistente-item" (click)="seleccionarPaciente(paciente)">
+      <ion-avatar slot="start">
+        <img [src]="paciente.foto_base64" alt="Foto de {{ paciente.nombre }}">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ paciente.nombre }} {{ paciente.apellido }}</h2>
+        <p>Teléfono: {{ paciente.telefono }}</p>
+        <p>Correo: {{ paciente.correo_electronico }}</p>
+        <p>Cédula: {{ paciente.cedula }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

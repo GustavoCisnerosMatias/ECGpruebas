@@ -1,0 +1,85 @@
+ion-toolbar {
+  --background: linear-gradient(135deg, #44ace4, #b3e5fc); /* Color personalizado */
+  --color: white; /* Color del texto */
+  --border-color: transparent; /* Elimina el borde */
+}  
+
+.estadisticas-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+}
+
+.chart-container {
+  width: 90%;
+  max-width: 900px;
+  height: 300px;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.estadisticas-tabla {
+  flex: 1;
+  width: 100%;
+  background-color: #d9ecee;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  color: #333333;
+  margin-bottom: 10px;
+  text-align: center;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
+}
+
+.header-row {
+  background-color: #007bff;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 8px 8px 0 0;
+  font-size: 0.7rem; /* Cambia el tamaño de la fuente aquí */
+}
+
+
+.data-row {
+  text-align: center;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.data-row:hover {
+  background-color: #e6e6e6;
+}
+
+.estadisticas-tabla ion-col {
+  padding: 12px;
+  color: #333333;
+}
+
+@media (max-width: 768px) {
+  .header-row ion-col,
+  .data-row ion-col {
+    font-size: 0.4rem;
+    padding: 8px;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+  }
+}
+
+  

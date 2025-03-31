@@ -1,0 +1,240 @@
+ion-title.center-title {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  ion-toolbar {
+    --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+    --color: white; /* Color del texto */
+    --border-color: transparent; /* Elimina el borde */
+  }
+
+
+  .large-icon {
+    font-size: 36px; /* Ajusta el tamaño según lo necesites */
+  }
+
+  ion-avatar {
+    display: none; /* Oculta el avatar si no es necesario */
+  }
+
+
+
+
+.large-icon {
+    font-size: 32px; /* Ajusta el tamaño según lo necesites */
+    margin-right: 8px; /* Espacio entre el ícono y el borde */
+    cursor: pointer; /* Cambia el cursor para indicar que es clicable */
+  }
+  .icono {
+    width: flex; /* Ajusta el tamaño según sea necesario */
+    height: flex;
+    margin-right: 0.5px; /* Espacio entre el icono y el texto */
+
+    align-items: center; /* Centrar verticalmente */
+  }
+.contenedor-icono {
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  height: 100%; /* Altura del contenedor, ajusta según necesites */
+  position: absolute; /* Para que esté detrás de otros componentes */
+  top: 0.1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; /* Asegúrate de que esté detrás de otros elementos */
+}
+
+
+.hidden {
+  display: none; /* Ocultar la imagen cuando sea necesario */
+}
+.menu-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Espaciado entre las opciones */
+  padding: 10px 0;
+  background-color: #f5f5f5; /* Fondo del menú */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 50px;
+  height: 55px; /* Aumentar la altura para que el contenido sea más visible */
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease;
+  margin: 10px;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+  background-color: #e0f7fa;
+}
+
+.menu-item ion-icon {
+  font-size: 25px;
+  color: #007aff;
+  margin-bottom: 5px;
+  transition: color 0.2s ease;
+}
+
+.menu-item:hover ion-icon {
+  color: #0056b3;
+}
+
+.menu-item ion-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.menu-item:hover ion-label {
+  color: #007aff;
+}
+
+
+
+
+/* Media query para pantallas más grandes */
+@media (min-width: 100px) {
+  .menu-item {
+    width:230px; /* Aumentar el ancho en pantallas grandes */
+    height: 46px;
+  }
+
+  .menu-item ion-icon {
+    font-size: 26px; /* Aumentar el tamaño del icono */
+  }
+
+  .menu-item ion-label {
+    font-size: 14px; /* Aumentar el tamaño de la fuente */
+  }
+}
+
+
+
+.icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-container ion-icon {
+  font-size: 40px; /* Tamaño predeterminado */
+  margin-right: 5px;
+}
+
+.icon-badge {
+  position: absolute;
+  top: 0;
+  right: -5px;
+  font-size: 12px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+// /* Media query para pantallas pequeñas */
+// @media (max-width: 700px) {
+//   .menu-item {
+//     width:100px; /* Aumentar el ancho en pantallas grandes */
+//     height: 63px;
+//   }
+//   .menu-item ion-icon {
+//     font-size: 30px; /* Iconos más grandes */
+//   }
+//   .menu-item ion-label {
+//     font-size: 10px; /* Ajustar fuente */
+//   }
+//   .icon-badge {
+//     font-size: 14px; /* Badge más visible */
+//     top: -2px;
+//     right: -2px;
+//   }
+// }
+
+
+// @media (max-width: 768px) {
+//   .menu-horizontal {
+//     position: fixed;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     width: 100%;
+//     background-color: white;
+//     padding: 10px 0;
+//     z-index: 1000; /* Asegura que esté sobre otros elementos */
+//     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Sombra superior */
+//   }
+
+//   ion-content {
+//     padding-bottom: 60px; /* Evita que el contenido quede oculto detrás del menú */
+//   }
+// }
+// @media (max-width: 768px) {
+//   .menu-horizontal {
+//     position: fixed;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     width: 100%;
+//     background-color: white;
+//     padding: 10px 0;
+//     z-index: 1000; /* Asegura que esté sobre otros elementos */
+//     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Sombra superior */
+//     height: 60px; /* Altura fija del menú */
+//   }
+
+//   ion-content {
+//     padding-bottom: 200px; /* Espacio extra para que el contenido no quede tapado */
+//   }
+// }
+@media (max-width: 768px) {
+  .menu-horizontal {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto; /* Habilitar scroll horizontal */
+    white-space: nowrap; /* Evitar que los elementos se envuelvan */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: white;
+    padding: 10px 0;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    // height: 70px;
+    scrollbar-width: none; /* Ocultar la barra de desplazamiento en Firefox */
+    justify-content: flex-start;
+  }
+
+  .menu-horizontal::-webkit-scrollbar {
+    display: none; /* Ocultar la barra de desplazamiento en Chrome y Safari */
+  }
+
+  .menu-item {
+    flex: 0 0 auto; /* Evitar que se reduzcan */
+    margin: 0 10px; /* Espacio entre los elementos */
+  }
+}

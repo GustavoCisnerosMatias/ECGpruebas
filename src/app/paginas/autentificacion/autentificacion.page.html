@@ -1,0 +1,51 @@
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <!-- Columna para la imagen -->
+      <ion-col size="12" size-md="6" class="image-column">
+
+        <img src="assets/img/princi.png" alt="Logo Principal" class="image-container">
+
+      </ion-col>
+
+      <!-- Columna para el formulario de autenticación -->
+      <ion-col size="12" size-md="6" class="form-column">
+        <ion-card class="login-card">
+          <ion-card-content>
+            <!-- Encabezado mejorado -->
+            <div class="auth-header">
+              <ion-text class="auth-title">INICIO DE SESIÓN</ion-text>
+              <ion-text class="auth-subtitle">Ingrese sus credenciales correctamente</ion-text>
+            </div>
+            <div class="login-container">
+              <ion-item lines="full" class="ion-margin">
+                <ion-icon name="person" slot="start"></ion-icon>
+                <ion-input [(ngModel)]="username" clearInput type="text" placeholder="Usuario" (keyup.enter)="login()"></ion-input>
+              </ion-item>
+
+              <ion-item lines="full" class="ion-margin">
+                <ion-icon name="lock-closed" slot="start"></ion-icon>
+                <ion-input [(ngModel)]="contrasena" clearInput [type]="hidePassword ? 'password' : 'text'" placeholder="Contraseña" (keyup.enter)="login()"></ion-input>
+                <ion-icon [name]="hidePassword ? 'eye' : 'eye-off'" slot="end" (click)="togglePasswordVisibility()"></ion-icon>
+              </ion-item>
+
+              <!-- Mensaje de error -->
+              <ion-text color="danger" *ngIf="errorMessage">
+                {{ errorMessage }}
+              </ion-text>
+
+              <ion-button class="custom-button" expand="full" (click)="login()">Ingresar</ion-button>
+              <div class="link-text ion-margin-top" (click)="forgotCredentials()">¿Olvidastes tu contraseña?</div>
+
+              <div class="link-text ion-margin-top" (click)="recuperarusuario()">¿Olvidastes tu usuario?</div>
+              <div class="link-text ion-margin-top" (click)="registerFirstTimeUser()">Registrarse como usuario</div>
+              <div class="link-text ion-margin-top" (click)="registerFirstTimeMedic()">Registrarse como medico</div>
+
+
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

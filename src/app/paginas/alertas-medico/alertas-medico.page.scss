@@ -1,0 +1,31 @@
+.header-title {
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+  
+  .custom-card {
+    --ion-card-background: #e4e7eb;
+    border-radius: 10px;
+  }
+  
+  .card-header {
+    background-color: #a8c2d3;
+    text-align: center;
+  }
+  
+  .alertas-card {
+    --ion-card-background:  #a8c2d3;
+    border-radius: 10px;
+  }
+  
+  .alert-item {
+    border-bottom: 1px solid #a8c2d3;
+  }
+  
+  .no-alerts {
+    text-align: center;
+    color: #cfe0e0;
+    font-style: italic;
+  }
+  

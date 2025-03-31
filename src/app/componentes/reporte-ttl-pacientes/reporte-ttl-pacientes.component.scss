@@ -1,0 +1,83 @@
+.estadisticas-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+}
+
+.chart-container {
+  width: 90%; // Ajusta este valor para controlar el tamaño del contenedor
+  max-width: 900px; // Tamaño máximo para el contenedor
+  height: 300px; // Ajusta la altura del contenedor según sea necesario
+}
+
+canvas {
+  width: 100% !important; // El gráfico se ajusta al ancho del contenedor
+  height: 100% !important; // El gráfico se ajusta a la altura del contenedor
+}
+.estadisticas-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px; /* Espacio entre las tablas */
+  margin: 20px;
+}
+
+.estadisticas-tabla {
+  flex: 1;
+  min-width: 45%;
+  background-color: #d9ecee; /* Fondo blanco limpio para cada tabla */
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para un efecto elegante */
+}
+
+.section-title {
+  font-size: 1.4rem;
+  color: #333333; /* Color de título en gris oscuro */
+  margin-bottom: 10px;
+  text-align: center;
+  border-bottom: 2px solid #007bff; /* Línea de acento en azul */
+  padding-bottom: 5px;
+}
+
+.header-row {
+  background-color: #007bff; /* Azul elegante para la cabecera */
+  color: #ffffff; /* Texto blanco en la cabecera */
+  font-weight: bold;
+  text-align: center;
+  border-radius: 8px 8px 0 0; /* Bordes redondeados en la parte superior */
+}
+
+.data-row {
+  text-align: center;
+  background-color: #f9f9f9; /* Fondo claro para las filas */
+  transition: background-color 0.3s ease;
+  border-bottom: 1px solid #e0e0e0; /* Línea divisoria entre filas */
+}
+
+.data-row:hover {
+  background-color: #e6e6e6; /* Fondo ligeramente más oscuro al pasar el mouse */
+}
+
+.estadisticas-tabla ion-col {
+  padding: 12px; /* Espaciado interno en las columnas */
+}
+
+/* Colores uniformes para las celdas */
+.estadisticas-tabla ion-col {
+  color: #333333; /* Color de texto en gris oscuro */
+}
+
+/* Estilo adicional para hacer que los números se vean uniformes */
+.estadisticas-tabla ion-col:nth-child(n) {
+  background-color: transparent; /* Sin color de fondo para un diseño limpio */
+}
+
+ion-toolbar {
+  --background: linear-gradient(135deg, #3e9acc, #b3e5fc); /* Color personalizado */
+  --color: white; /* Color del texto */
+  --border-color: transparent; /* Elimina el borde */
+}
+
+

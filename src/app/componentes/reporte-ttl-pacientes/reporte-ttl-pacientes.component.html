@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Informes estadístico de pacientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="estadisticas-container">
+    <ion-grid>
+      <ion-row>
+        <!-- Columna para el gráfico de pacientes nuevos por mes -->
+        <ion-col size="12">
+          <h2>Pacientes nuevos por mes</h2>
+          <div class="chart-container">
+            <canvas baseChart
+                [datasets]="[
+                  {
+                    data: conteoPacientesPorMes,
+                    label: 'Pacientes Nuevos',
+                    backgroundColor: [
+                      '#4D9DE0', '#E15554', '#3BB273', '#7768AE', '#F7CB15', '#5D576B', '#6B4226', '#FF6F61', '#88B04B', '#92A8D1', '#034F84', '#F7786B'
+                    ],
+                    borderColor: '#333333',
+                    borderWidth: 1
+                  }
+                ]"
+                [labels]="meses"
+                [options]="{ responsive: true, maintainAspectRatio: false }"
+                type="line">
+            </canvas>
+          </div>
+        </ion-col>
+  
+        <!-- Columna para el gráfico de total de pacientes por año -->
+        <ion-col size="12">
+          <h2>Total de pacientes por año</h2>
+          <div class="chart-container">
+            <canvas baseChart
+                [datasets]="[
+                  {
+                    data: totalPacientesPorAnio,
+                    label: 'Total de Pacientes',
+                    backgroundColor: [
+                      '#008080', '#D2691E', '#FFD700', '#FF7F50', '#4682B4', '#6A5ACD', '#20B2AA', '#FF6347', '#708090', '#C71585', '#B0C4DE', '#32CD32'
+                    ],
+                    borderColor: '#333333',
+                    borderWidth: 1
+                  }
+                ]"
+                [labels]="anios"
+                [options]="{ responsive: true, maintainAspectRatio: false }"
+                type="line">
+            </canvas>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  
+
+  <div class="estadisticas-container">
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12" size-lg="6" class="section">
+                <ion-grid class="estadisticas-tabla">
+                    <h2 class="section-title">Datos por mes</h2>
+                    <ion-row class="header-row">
+                        <ion-col size="3"><strong>Meses</strong></ion-col>
+                        <ion-col size="3"><strong>Pacientes nuevos</strong></ion-col>
+                        <ion-col size="3"><strong>Total de pacientes</strong></ion-col>
+                        <ion-col size="3"><strong>Cambio mensual de nuevos pacientes</strong></ion-col>
+                    </ion-row>
+
+                    <ion-row *ngFor="let estadistica of estadisticasPorMes" class="data-row">
+                        <ion-col size="3">{{ estadistica.mes }}</ion-col>
+                        <ion-col size="3">{{ estadistica.pacientesNuevos }}</ion-col>
+                        <ion-col size="3">{{ estadistica.totalPacientes }}</ion-col>
+                        <ion-col size="3">{{ estadistica.cambioMensual }}</ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-col>
+
+            <ion-col size="12" size-lg="6" class="section">
+                <ion-grid class="estadisticas-tabla">
+                    <h2 class="section-title">Datos por año</h2>
+                    <ion-row class="header-row">
+                        <ion-col size="3"><strong>Año</strong></ion-col>
+                        <ion-col size="3"><strong>Pacientes Nuevos</strong></ion-col>
+                        <ion-col size="3"><strong>Total de Pacientes</strong></ion-col>
+                        <ion-col size="3"><strong>Tasa de crecimiento anual</strong></ion-col>
+                    </ion-row>
+
+                    <ion-row *ngFor="let estadistica of estadisticasPorAnio" class="data-row">
+                        <ion-col size="3">{{ estadistica.anio }}</ion-col>
+                        <ion-col size="3">{{ estadistica.pacientesNuevos }}</ion-col>
+                        <ion-col size="3">{{ estadistica.totalPacientes }}</ion-col>
+                        <ion-col size="3">{{ estadistica.cambioAnual }}</ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>
+
+
+  
+</ion-content>

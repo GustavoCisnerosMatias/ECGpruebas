@@ -1,0 +1,39 @@
+<!-- no funciona --------------------------------- -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Parametros Biomedicos en tiempo real</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="iniciarConexionWebSocket()">Reiniciar</ion-button>
+
+  <!-- Contenedor centrado para el ion-card -->
+  <div class="card-contenedor">
+    <ion-card class="datos-card" *ngIf="datos && datos.nombre && datos.valor">
+      <ion-card-header>
+      </ion-card-header>
+      <ion-card-content>
+        <table class="datos-tabla">
+          <tr>
+            <!-- <th>Signo vital</th> -->
+            <td>{{ datos.nombre }}</td>
+            <td>-*-*-*-*-*-*-*-*-*</td>
+          </tr>
+          <tr>
+            <!-- <th>------</th> -->
+            <td class="valor-grande">{{ datos.valor }}</td>
+            <td>{{ datos.unidad_medida }}</td>
+          </tr>
+        </table>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-text color="danger" *ngIf="mensajeError">
+    {{ mensajeError }}
+  </ion-text>
+</ion-content>

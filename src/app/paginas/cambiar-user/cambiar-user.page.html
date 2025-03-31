@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Cambiar  usuario</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" size-sm="6">
+            <ion-item>
+              <ion-label position="floating">Cédula</ion-label>
+              <ion-input [(ngModel)]="cedula"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" size-sm="6">
+            <ion-item>
+              <ion-label position="floating">Nuevo usuario</ion-label>
+              <ion-input [(ngModel)]="nuevoUsername"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-button expand="full" (click)="cambiarUsername()">Cambiar usuario</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-text color="tertiary" *ngIf="mensaje">{{ mensaje }}</ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

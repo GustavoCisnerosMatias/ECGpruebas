@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Tipos de Alertas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleFormularioNuevo()">
+        <ion-icon slot="icon-only" name="add-circle"></ion-icon> <!-- Icono para mostrar/ocultar formulario -->
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  
+  <div class="form-container" *ngIf="mostrarFormulario">
+    <ion-label>Crear nuevo tipo de alerta</ion-label>
+    <ion-buttons slot="start">
+      <ion-button (click)="toggleFormularioNuevo()" color="danger" fill="clear">
+        <ion-icon name="close"></ion-icon> <!-- Icono de cerrar -->
+        
+      </ion-button>
+    </ion-buttons>
+    
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Nombre de Alerta</ion-label>
+        <ion-input [(ngModel)]="nuevoTipo.nombre_alerta"></ion-input> <!-- Se eliminó el atributo required -->
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Descripción</ion-label>
+        <ion-input [(ngModel)]="nuevoTipo.descripcion"></ion-input> <!-- Se eliminó el atributo required -->
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Rango Mínimo (Ej: 37.10)</ion-label>
+        <ion-input [(ngModel)]="nuevoTipo.rango_min" type="number"></ion-input> <!-- Se eliminó el atributo required -->
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Rango Máximo</ion-label>
+        <ion-input [(ngModel)]="nuevoTipo.rango_max" type="number"></ion-input> <!-- Se eliminó el atributo required -->
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Edad Mínima</ion-label>
+        <ion-input [(ngModel)]="nuevoTipo.edad_min" type="number"></ion-input> <!-- Se eliminó el atributo required -->
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Edad Máxima</ion-label>
+        <ion-input [(ngModel)]="nuevoTipo.edad_max" type="number"></ion-input> <!-- Se eliminó el atributo required -->
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Seleccionar Parámetro</ion-label>
+        <ion-select [(ngModel)]="nuevoTipo.id_parametro">
+          <ion-select-option *ngFor="let parametro of parametros" [value]="parametro.id_parametro">
+            {{ parametro.nombre }} ({{ parametro.unidad_medida }})
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Género</ion-label>
+        <ion-select [(ngModel)]="nuevoTipo.genero">
+          <ion-select-option value="Masculino">Masculino</ion-select-option>
+          <ion-select-option value="Femenino">Femenino</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-button expand="full" (click)="guardarCambios()" color="primary">
+        <ion-icon slot="start" name="checkmark-circle"></ion-icon> Guardar
+      </ion-button>
+      
+    </ion-list>
+  </div>
+
+  <ion-list>
+    <ion-item *ngFor="let tipo of tiposAlertas">
+      <ion-label>
+        <h2>{{ tipo.nombre_alerta }}</h2>
+        <p>{{ tipo.descripcion }}</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="editarTipoAlerta(tipo)">
+          <ion-icon name="create"></ion-icon> <!-- Icono de editar -->
+        </ion-button>
+        <ion-button color="danger" (click)="eliminarTipoAlerta(tipo.id_tipoalerta)">
+          <ion-icon name="trash"></ion-icon> <!-- Icono de eliminar -->
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-content>

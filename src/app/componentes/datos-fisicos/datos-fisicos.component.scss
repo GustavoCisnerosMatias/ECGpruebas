@@ -1,0 +1,43 @@
+
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Espaciado superior */
+}
+
+.button-next {
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    transition: background-color 0.3s, transform 0.2s; /* Efectos al pasar el ratón */
+}
+
+.button-next:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el ratón */
+    transform: scale(1.05); /* Agrandar ligeramente */
+}
+
+
+
+ion-note {
+    font-size: 12px; /* Tamaño de fuente más pequeño */
+    margin-top: 5px; /* Espaciado superior */
+    //color: red; /* Color rojo para errores */
+}
+
+ion-toolbar {
+    --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+    --color: white; /* Color del texto */
+    --border-color: transparent; /* Elimina el borde */
+  }
+  .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px; /* Ajusta este valor según el tamaño deseado */
+    margin: auto;
+  }
+  

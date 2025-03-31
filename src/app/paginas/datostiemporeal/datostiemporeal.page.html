@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear Medicos</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- Botón para conectar WebSocket -->
+  <ion-button (click)="iniciarConexionWebSocket()">Conectar WebSocket</ion-button>
+
+  <!-- Mensaje de error -->
+  <div *ngIf="mensajeError">
+    <ion-text color="danger">{{ mensajeError }}</ion-text>
+  </div>
+
+  <!-- Gráfico -->
+  <div *ngIf="chartData.datasets[0].data.length > 0">
+    <canvas
+      baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [legend]="chartLegend"
+      type="line"  
+      [plugins]="chartPlugins">
+    </canvas>
+  </div>
+</ion-content>
+
+
+
+  <!-- Datos en formato de lista -->
+  <!-- Comentado ya que no se requiere para el gráfico, pero puedes habilitarlo si necesitas mostrar datos adicionales -->
+  <!-- 
+  <ion-list>
+    <ion-item *ngFor="let dato of datos">
+      Código: {{ dato.codigo }}<br>
+      Nombre: {{ dato.nombre }}<br>
+      Fecha: {{ dato.fecha }}<br>
+      Valor: {{ dato.valor }}<br>
+    </ion-item>
+  </ion-list>
+  -->
+
+  <!-- Gráfico -->
+
+
+
+
+
+
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Datos en Tiempo Real</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="iniciarConexionWebSocket()">Conectar WebSocket</ion-button>
+  <ion-list>
+    <ion-item *ngFor="let dato of datos">
+      {{ dato | json }}
+    </ion-item>
+  </ion-list>
+  <ion-text color="danger" *ngIf="mensajeError">
+    {{ mensajeError }}
+  </ion-text>
+</ion-content> -->

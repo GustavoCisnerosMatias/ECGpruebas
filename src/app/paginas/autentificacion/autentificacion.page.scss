@@ -1,0 +1,67 @@
+
+  .login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    padding: 2rem;
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 400px;
+    --background: #437a97;  /* Color de fondo del cuadro */
+    border-radius: 10px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+  }
+  
+  .login-container {
+    padding: 1rem;
+  }
+  
+  .link-text {
+    color:  #1d1919; 
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .ion-margin-top {
+    margin-top: 10px;
+    
+  }
+  
+  .ion-margin {
+    border-radius: 10px; /* Esquinas redondeadas */
+    
+  }
+  
+
+  .auth-header {
+    text-align: center; /* Centra el texto */
+    margin-bottom: 1rem; /* Espacio debajo del encabezado */
+  }
+  
+  .auth-title {
+    display: block;
+    font-size: 1.5rem; /* Tamaño de fuente más grande */
+    font-weight: bold; /* Negrita */
+    color:  #070707; /* Color principal del tema */
+    margin-bottom: 0.5rem; /* Espacio debajo del título */
+  }
+  ion-icon{
+    color:  #070707; 
+  }
+  .auth-subtitle {
+    display: block;
+    font-size: 1rem; /* Tamaño de fuente */
+    color: #161515;/* Color más suave para el subtítulo */
+  }
+  .image-container {
+    width: 150%; /* Ajusta el ancho al contenedor */
+    height: 98%; /* Mantiene la relación de aspecto */
+   }
+   .custom-button {
+    --background: #1d88c2;
+    --color:  #070707; 
+}
+

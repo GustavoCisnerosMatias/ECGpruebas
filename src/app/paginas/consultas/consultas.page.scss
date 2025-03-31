@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-direction: column; /* Cambiado para un menú vertical */
+  padding: 10px;
+  max-width: 240px; /* Ajusta el ancho según sea necesario */
+  margin: 700px; /* Centra el menú vertical */
+}
+
+ion-toolbar {
+  --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+  --color: white; /* Color del texto */
+  --border-color: transparent; /* Elimina el borde */
+}
+
+
+.custom-card {
+  background: linear-gradient(135deg, #b3e5fc, #81d4fa);
+  color: #035add;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  text-align: center;
+  height: 500px; /* Ajusta la altura según lo necesario */
+  margin: 10px 0; /* Espacio entre los ítems del menú */
+}
+
+.custom-card:hover {
+  transform: scale(1.05);
+}
+
+.icono {
+  font-size: 50px; /* Ajuste para íconos más pequeños en el menú vertical */
+  color: #0288d1;
+}
+
+ion-card-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #01579b;
+}
+
+ion-card-header {
+  text-align: center;
+}

@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-title class="custom-title">Alertas</ion-title>
+</ion-header>
+
+<ion-content>
+  <!-- Lista de Alertas -->
+  <ion-list>
+    <ion-item *ngFor="let alerta of alertas">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="8" (click)="marcarVista(alerta.id_alertas)">
+            <ion-label>
+              <h2>{{ alerta.nombre_alerta }}</h2>
+              <p>{{ alerta.fecha_alerta }}</p>
+              <p>{{ alerta.a_nombre }}</p>
+              <p>{{ alerta.valor }} {{ alerta.unidad_medida }}</p>
+              <p>{{ alerta.descripcion }}</p>
+              <!-- Color de la vista según estado -->
+              <h1 [ngStyle]="{'color': alerta.vista === 'Nuevo' ? '#FFEB3B' : 'inherit'}">
+                {{ alerta.vista }}
+              </h1>
+            </ion-label>
+          </ion-col>
+          <ion-col size="4">
+            <!-- Botón para agregar una nota -->
+            <ion-button (click)="showAddNoteForm(alerta.id_alertas)">Agregar Nota</ion-button>
+          </ion-col>
+        </ion-row>
+
+        <!-- Formulario para agregar notas si esta alerta está seleccionada -->
+        <ion-row *ngIf="selectedAlertId === alerta.id_alertas">
+          <ion-col>
+            <ion-label>Notas para alerta {{ selectedAlertId }}:</ion-label>
+            <ion-list>
+              <ion-item>
+                <ion-label>Seleccionar nota</ion-label>
+                <ion-select (ionChange)="seleccionarNotas($event)">
+                  <ion-select-option *ngFor="let nota of listaNota" [value]="nota.id_estadousuario">
+                    {{ nota.descripcion }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+            <ion-button  (click)="guardarNota()">Guardar nota</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+
+  <!-- Mensaje si no hay alertas disponibles -->
+  <div *ngIf="alertas.length === 0">
+    <ion-label>No hay alertas disponibles en los últimos 5 días.</ion-label>
+  </div>
+
+  <!-- Botón para mostrar todas las alertas -->
+  <ion-button color="secondary" (click)="Todas_alertas()">
+    <ion-icon slot="start" name="add-circle"></ion-icon>
+    Ver todas las alertas
+  </ion-button>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-list>
+  <ion-item *ngFor="let alerta of alertas" (click)="marcarVista(alerta.id_alertas)">
+    <ion-label>
+      <h2>{{ alerta.nombre_alerta }}</h2>
+      <p>{{ alerta.fecha_alerta }}</p>
+      <p>{{ alerta.a_nombre }}</p>
+      <p>{{ alerta.valor }}{{ alerta.unidad_medida }}</p>
+      <p>{{ alerta.descripcion }}</p>
+      <h1 [ngStyle]="{'color': alerta.vista === 'Nuevo' ? '#FFEB3B' : 'inherit'}">
+        {{ alerta.vista }}
+      </h1>
+    </ion-label>
+  </ion-item>
+</ion-list>
+
+<ion-content>   
+  <ion-label></ion-label> <ion-button expand="full" (click)="Todas_alertas()">Todas las alertas</ion-button>
+</ion-content> -->

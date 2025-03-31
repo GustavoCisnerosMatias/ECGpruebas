@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Historial Médico</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="full-height">
+    <ion-row class="full-height">
+      <!-- Menú vertical -->
+      <ion-col class="max-height-col" *ngIf="!selectedOption || isLargeScreen" size="12" size-md="2.5">
+        <ion-card *ngFor="let option of menuOptions" (click)="selectMenuOption(option.value)" [class.selected]="selectedOption === option.value" class="menu-card">
+          <ion-card-header>
+            <ion-icon [name]="option.icon" class="icono"></ion-icon>
+            <ion-card-title>{{ option.label }}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+
+      <!-- Contenido de las opciones seleccionadas -->
+      <ion-col class="max-height-col" *ngIf="selectedOption || isLargeScreen" size="12" size-md="9">
+        <ion-button *ngIf="!isLargeScreen" (click)="deselectOption()" expand="block">Volver al Menú</ion-button>
+        <div class="content-wrapper">
+          <ng-container *ngIf="selectedOption === 'antecePerson'">
+            <app-antece-person [paciente]="paciente"></app-antece-person>
+          </ng-container>
+          <ng-container *ngIf="selectedOption === 'trataAnte'">
+            <app-trata-ante [paciente]="paciente"></app-trata-ante>
+          </ng-container>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

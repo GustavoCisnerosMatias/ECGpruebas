@@ -1,0 +1,56 @@
+.input-item {
+  margin-bottom: 16px; /* Espaciado entre los campos */
+}
+
+.error-message {
+  color: red; /* Color del mensaje de error */
+  font-size: 12px; /* Tamaño de la fuente */
+  margin-top: 4px; /* Espaciado entre el campo y el mensaje */
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Espacio entre los botones */
+  margin-top: 20px; /* Espaciado superior para los botones */
+}
+
+.button-previous {
+  color: #007bff; /* Color del botón anterior */
+}
+
+.button-create {
+  background-color: #28a745; /* Color de fondo del botón de finalizar */
+  color: white; /* Color del texto del botón */
+}
+
+.button-create:disabled {
+  background-color: #c6c8ca; /* Color del botón deshabilitado */
+}
+.tooltip {
+  display: none;
+  background-color: rgba(138, 51, 51, 0.75);
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 12px;
+  position: absolute;
+  z-index: 1;
+}
+.info-icon:hover + .tooltip {
+  display: block;
+}
+
+ion-toolbar {
+  --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+  --color: white; /* Color del texto */
+  --border-color: transparent; /* Elimina el borde */
+}
+
+.form-container {
+  width: 90%; /* Ajustar el ancho según sea necesario */
+  max-width: 670px; /* Ancho máximo */
+  margin: 0 auto; /* Centrar el contenedor */
+  padding: 20px;
+  background-color: #f9f9f9; /* Color de fondo del contenedor */
+  border-radius: 10px; /* Bordes redondeados */
+}

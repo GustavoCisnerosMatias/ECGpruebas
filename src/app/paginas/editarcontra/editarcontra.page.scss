@@ -1,0 +1,20 @@
+ion-card {
+  --background: #e0e9e9; /* Cambia este color según tu preferencia */
+}
+
+ion-grid {
+  background-color: #e4ebec; /* Cambia este color según tu preferencia */
+  padding: 16px;
+  border-radius: 8px;
+}
+
+  .profile-options {
+    ion-button {
+      width: 100%; /* Ocupa todo el ancho disponible */
+      margin-bottom: 10px; /* Espacio entre cada botón */
+      --background: #7fa4ce; /* Color de fondo */
+      --color: white; /* Color del texto */
+      --border-radius: 8px; /* Radio de los bordes */
+      --box-shadow: none; /* Eliminar sombra si es necesario */
+    }
+  }

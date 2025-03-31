@@ -1,0 +1,10 @@
+ion-content.fondo-componente {
+    --background: linear-gradient(135deg, #3eccb9, #b1f7ed); /* Color personalizado */
+  }
+  
+  
+  ion-toolbar {
+    --background: linear-gradient(135deg, #3eccb9, #b1f7ed); /* Color personalizado */
+    --color: white; /* Color del texto */
+    --border-color: transparent; /* Elimina el borde */
+  }

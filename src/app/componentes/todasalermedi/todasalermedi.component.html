@@ -1,0 +1,34 @@
+
+  
+  <ion-content>
+  
+    <!-- Mostrar las Alertas -->
+    <ion-card *ngIf="alertas.length > 0" class="alertas-card">
+      <ion-card-header >
+        <ion-card-title>Nuevas alertas</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let alerta of alertas" class="alert-item">
+            <ion-icon name="alert-circle-outline" slot="start" color="danger"></ion-icon>
+            <ion-label>
+              <h2>{{ alerta.nombre }}{{ alerta.apellido }}</h2>
+              <p><strong>Cedula:   </strong> {{ alerta.cedula }}</p>
+              <p><strong>Alerta:   </strong>{{ alerta.nombre_alerta }}</p>
+              <p><strong>Alerta:   </strong>{{ alerta.nombre_parametro }}</p>
+              <p><strong>Fecha:   </strong> {{ alerta.hora_alerta }}</p>
+              <p><strong>Valor:   </strong> {{ alerta.valor }} {{ alerta.unidad_medida }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  
+    <!-- Sin Alertas -->
+    <ion-card *ngIf="alertas.length === 0" class="alertas-card">
+      <ion-card-content>
+        <p class="no-alerts">No hay alertas disponibles para este paciente.</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  

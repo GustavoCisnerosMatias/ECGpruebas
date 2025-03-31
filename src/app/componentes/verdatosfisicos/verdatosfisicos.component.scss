@@ -1,0 +1,157 @@
+/* Fondo del contenedor principal */
+.fondo {
+    background-color: #202097; /* Color de fondo suave */
+    padding: 16px;
+  }
+  
+  /* Estilo para las tarjetas de los datos físicos */
+  .vital-card {
+    margin: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Iconos dentro de las tarjetas */
+  .icono {
+    width: 100x;
+    height: 100px;
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Estilo para los valores grandes dentro de las tarjetas */
+  .vital-values {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .valor-grande {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-right: 5px;
+  }
+  
+  h3 {
+    font-size: 18px;
+    font-weight: normal;
+    color: #777;
+  }
+  
+  /* Tarjeta para IMC */
+  .datos-imc {
+    margin-top: 15px;
+  }
+  
+  .imc-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .imc-label {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+  }
+  
+  .imc-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50; /* Verde para valores saludables */
+  }
+  
+  .imc-description {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .peso-ideal-label {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .peso-ideal {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FF9800; /* Naranja para rango de peso ideal */
+  }
+  
+  /* Tooltip de IMC */
+  .tooltip {
+    position: absolute;
+    top: -5px;
+    left: 100%;
+    margin-left: 10px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    max-width: 200px;
+  }
+  
+  .info-icon {
+    cursor: pointer;
+  }
+  
+  /* Estilo del botón de editar */
+  .custom-button {
+    background-color: #b9c7d1; /* Azul para el botón */
+    color: white;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .custom-button ion-icon {
+    margin-right: 10px;
+  }
+  .menaje{
+    text-align: center;
+  }
+  
+  .custom-button:hover {
+    background-color: #0056b3; /* Azul más oscuro cuando se pasa el ratón */
+  }
+  
+  /* Asegurarse de que las columnas se ajusten correctamente en dispositivos pequeños */
+  ion-col {
+    margin-bottom: 15px;
+  }
+  
+  @media (max-width: 768px) {
+    .vital-card {
+      margin: 5px;
+    }
+    .valor-grande {
+      font-size: 28px;
+    }
+    .imc-value {
+      font-size: 20px;
+    }
+  }
+  
+
+  /* Estilo general para el icono */
+.icon-peso {
+  font-size: 83px; /* Tamaño del ícono */
+  color: #086d9c; /* Color inicial */
+  transition: color 0.3s ease; /* Transición suave al cambiar el color */
+  width: 113x;
+  height: 113px;
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Cambiar el color al pasar el mouse */
+.icon-peso:hover {
+  color: #f44336; /* Nuevo color (rojo) */
+}

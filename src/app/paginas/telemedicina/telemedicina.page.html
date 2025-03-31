@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/usuario"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Telemedicina</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <app-chat-usuario *ngIf="mostrarChat" [id_usuario]="id_usuario" [id_medico]="id_medico"(chatClosed)="cerrarChat()"></app-chat-usuario>
+    
+  
+  <!-- Campo de búsqueda -->
+  <ion-item >
+    <ion-icon name="search-outline"></ion-icon>
+    <ion-input [(ngModel)]="busqueda" placeholder="Nombre o apellido"></ion-input>
+  </ion-item>
+
+  <!-- Sección para mostrar médicos obtenidos por usuario -->
+  <ion-card class="busca" >
+    <ion-card-header>
+      <ion-card-title>Lista de Médicos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let medico of medicosFiltrados()">
+          <ion-label>
+            <ion-avatar slot="start" *ngIf="medico.foto_base64" class="large-avatar">
+              <img [src]="'data:image/jpeg;base64,' + medico.foto_base64" alt="Foto del médico">
+            </ion-avatar>
+            <ion-avatar slot="start" *ngIf="!medico.foto_base64" class="large-avatar">
+              <img src="assets/img/Registro2.png" alt="Sin foto">
+            </ion-avatar>
+            <h2>{{ medico.nombre }} {{ medico.apellido }}</h2>
+            <h2>Centro Hospitalario:</h2><p> {{ medico.nombre_centro }}</p>
+            <h2>Especialidad:</h2><p> {{ medico.nombre_esp }}</p>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button (click)="mostrarOpcionesMensaje(medico, 'whatsapp')">
+              <ion-icon  name="logo-whatsapp"></ion-icon>
+            </ion-button>
+            <ion-button (click)="mostrarOpcionesMensaje(medico, 'telegram')">
+              <ion-icon  name="paper-plane"></ion-icon>
+            </ion-button>
+            
+            <ion-button (click)="irAChat(medico)">
+              <ion-icon  name="chatbubble-ellipses"></ion-icon>
+              <!-- Mostrar el contador si hay nuevos mensajes -->
+              <ion-badge *ngIf="nuevosMensajes[medico.id_medico] > 0" color="danger">{{ nuevosMensajes[medico.id_medico] }}</ion-badge>
+            </ion-button>
+            
+            
+          </ion-buttons>
+        </ion-item>
+        
+      </ion-list>
+    </ion-card-content>
+
+ 
+  </ion-card>
+
+  <!-- Action Sheet para seleccionar el mensaje -->
+  <ion-action-sheet
+    [isOpen]="mostrarActionSheet"
+    [header]="'Selecciona un mensaje para ' + nombreMedico"
+    [buttons]="opcionesMensajes"
+    (didDismiss)="cerrarActionSheet()">
+  </ion-action-sheet>
+</ion-content>

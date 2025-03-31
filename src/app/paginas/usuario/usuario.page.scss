@@ -1,0 +1,94 @@
+.profile-card {
+  text-align: center;
+  background-color: transparent; /* Fondo transparente para el perfil */
+  border-radius: 20px;
+  box-shadow: none; /* Sin sombra */
+}
+
+.profile-container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrar todo el contenido horizontalmente */
+}
+
+.profile-img-wrapper {
+  display: flex; /* Usa flexbox para centrar */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  width: 100px; /* Ajusta el tamaño del contenedor */
+  height: 100px; /* Ajusta el tamaño del contenedor */
+  margin: 0 auto; /* Centra el contenedor */
+  overflow: hidden; /* Asegura que la imagen no sobresalga del contenedor */
+  border-radius: 50%; /* Asegura que el contenedor también sea redondo */
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionar */
+}
+
+.profile-info {
+  text-align: center;
+}
+
+.profile-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.options-card {
+  background-color:  #6cb9dd; /* Color de fondo para los cuadros */
+  border-radius: 10px;
+  box-shadow: none; /* Sin sombra */
+  padding: 1rem; /* Espaciado interno */
+}
+
+.options-list {
+  --padding-start: 0; /* Elimina el espaciado a la izquierda */
+}
+
+.options-list ion-item {
+  --background: transparent; /* Fondo transparente para los items */
+  --border-color: transparent; /* Elimina el color del borde */
+  --color: #000; /* Color del texto */
+  --inner-padding-end: 0; /* Elimina el padding derecho */
+  --inner-padding-start: 0; /* Elimina el padding izquierdo */
+}
+
+ion-card-header {
+  font-weight: bold;
+}
+
+ion-card-title {
+  font-size: 1.2rem;
+}
+
+.custom-button {
+  --background:  #6cb9dd; /* Color de fondo */
+  --color: rgb(10, 10, 10); /* Color del texto */
+  --border-radius: 5px; /* Esquinas redondeadas (opcional) */
+}
+
+.custom-button:hover {
+  --background:  #6cb9dd; /* Color de fondo en hover */
+}
+
+.profile-info ion-item {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+ion-toolbar {
+  --background: linear-gradient(135deg, #046396, #6cb9dd); /* Color personalizado */
+  --color: white; /* Color del texto */
+  --border-color: transparent; /* Elimina el borde */
+}
+
+
+
+.camera-icon:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
